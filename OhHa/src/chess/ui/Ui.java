@@ -1,12 +1,13 @@
 
 package chess.ui;
 
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
@@ -31,17 +32,8 @@ public class Ui implements Runnable{
     }
 
     public void createComponents(Container container) {
-        GridLayout layout = new GridLayout(1 , 2);
-        container.setLayout(layout);
         
-        GridLayout grids = new GridLayout(8, 8);
-        JPanel panel = new JPanel(grids);
         
-        for (int i = 0; i < 64; i++) {
-            panel.add(new JButton());
-        }
-        container.add(panel);
-        container.add(new JButton());
         
     }
     
