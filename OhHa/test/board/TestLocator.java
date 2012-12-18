@@ -39,4 +39,14 @@ public class TestLocator {
         assertEquals(square.getX() , 5);
         assertEquals(square.getY() , 4);
     }
+    
+    @Test
+    public void returnsRightString(){
+        Board board = new Board();
+        Locator l = new Locator(board);
+        
+        String string = l.squareToString(board.getSquares().get(17));
+        
+        assertEquals("b3", string);
+    }
 }

@@ -2,3 +2,5 @@
 2h aihemäärittelyn teko ja githubin opettelu.
 2h ohjelmointia
 2h pähkäilyä
+18.1.2012
+2h koodausta ja testejä

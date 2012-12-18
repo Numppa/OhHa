@@ -32,4 +32,21 @@ public class Locator {
         return square;
     }
     
+    public String squareToString(Square square){
+        String string = "";
+        
+        if(square.getX() == 1) string += "a";
+        if(square.getX() == 2) string += "b";
+        if(square.getX() == 3) string += "c";
+        if(square.getX() == 4) string += "d";
+        if(square.getX() == 5) string += "e";
+        if(square.getX() == 6) string += "f";
+        if(square.getX() == 7) string += "g";
+        if(square.getX() == 8) string += "h";
+        
+        string += square.getY();
+        
+        return string;
+    }
+    
 }

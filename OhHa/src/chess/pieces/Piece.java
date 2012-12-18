@@ -19,4 +19,8 @@ public abstract class Piece {
         square = s;
     }
     
+    public Side getSide(){
+        return side;
+    }
+    
 }
