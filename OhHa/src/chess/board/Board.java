@@ -1,13 +1,13 @@
 package chess.board;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Board {
-    private HashSet<Square> squares;
+    private List<Square> squares;
     
     public Board(){
-        this.squares = new HashSet<Square>();
+        this.squares = new ArrayList<Square>();
         
         for (int i = 1; i <= 8; i++) {
             for (int j = 1; j <= 8; j++) {
@@ -16,7 +16,7 @@ public class Board {
         }
     }
     
-    public Set getSquares(){
+    public List<Square> getSquares(){
         return squares;
     }
 }

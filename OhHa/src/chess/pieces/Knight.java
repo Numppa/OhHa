@@ -1,5 +1,11 @@
 package chess.pieces;
 
-public class Knight {
+import chess.board.Square;
+
+public class Knight extends Piece{
+    
+    public Knight(Square square , Side side){
+        super(square , side);
+    }
     
 }

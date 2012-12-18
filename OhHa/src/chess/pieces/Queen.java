@@ -1,5 +1,10 @@
 package chess.pieces;
 
-public class Queen {
+import chess.board.Square;
+
+public class Queen extends Piece{
     
+    public Queen(Square square , Side side){
+        super(square , side);
+    }
 }
