@@ -1,9 +1,8 @@
 package board;
 
 
-import chess.pieces.Queen;
+import chess.pieces.Type;
 import chess.board.Locator;
-import chess.pieces.King;
 import chess.pieces.Piece;
 import chess.board.Board;
 import chess.pieces.Side;
@@ -39,7 +38,7 @@ public class TestBoard {
         Piece piece = null;
         
         for (Piece p : board.getPieces()) {
-            if(p.getClass() == King.class && p.getSide() == Side.WHITE){
+            if(p.getType() == Type.KING && p.getSide() == Side.WHITE){
                 piece = p;
             }
         }
@@ -54,7 +53,7 @@ public class TestBoard {
         Piece piece = null;
         
         for (Piece p : board.getPieces()) {
-            if(p.getClass() == Queen.class && p.getSide() == Side.BLACK){
+            if(p.getType() == Type.QUEEN && p.getSide() == Side.BLACK){
                 piece = p;
             }
         }
@@ -63,4 +62,16 @@ public class TestBoard {
         
         assertEquals("d8" , locator.squareToString(piece.getSquare()));
     }
+    
+    @Test
+    public void thereAre16Pawns(){
+        int sum = 0;
+        for (Piece p : board.getPieces()) {
+            if (p.getType() == Type.PAWN){
+                sum++;
+            }
+        }
+        assertEquals(16 , sum);
+    }
+    
 }

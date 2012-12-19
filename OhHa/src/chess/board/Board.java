@@ -1,13 +1,9 @@
 package chess.board;
 
-import chess.pieces.Bishop;
-import chess.pieces.King;
-import chess.pieces.Knight;
-import chess.pieces.Pawn;
+
 import chess.pieces.Piece;
-import chess.pieces.Queen;
-import chess.pieces.Rook;
 import chess.pieces.Side;
+import chess.pieces.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,30 +35,30 @@ public class Board {
 
     private void setUpPieces() {
         for (int i = 8; i < 16; i++) {
-            Pawn p = new Pawn(squares.get(i) , Side.WHITE);
+            Piece p = new Piece(squares.get(i) , Side.WHITE , Type.PAWN);
             pieces.add(p);
         }
         for (int i = 48; i < 56; i++) {
-            Pawn p = new Pawn(squares.get(i) , Side.BLACK);
+            Piece p = new Piece(squares.get(i) , Side.BLACK , Type.PAWN);
             pieces.add(p);
         }
         
-        pieces.add(new Rook(squares.get(0) , Side.WHITE));
-        pieces.add(new Knight(squares.get(1) , Side.WHITE));
-        pieces.add(new Bishop(squares.get(2) , Side.WHITE));
-        pieces.add(new Queen(squares.get(3) , Side.WHITE));
-        pieces.add(new King(squares.get(4) , Side.WHITE));
-        pieces.add(new Bishop(squares.get(5) , Side.WHITE));
-        pieces.add(new Knight(squares.get(6) , Side.WHITE));
-        pieces.add(new Rook(squares.get(7) , Side.WHITE));
+        pieces.add(new Piece(squares.get(0) , Side.WHITE , Type.ROOK));
+        pieces.add(new Piece(squares.get(1) , Side.WHITE , Type.KNIGHT));
+        pieces.add(new Piece(squares.get(2) , Side.WHITE , Type.BISHOP));
+        pieces.add(new Piece(squares.get(3) , Side.WHITE , Type.QUEEN));
+        pieces.add(new Piece(squares.get(4) , Side.WHITE , Type.KING));
+        pieces.add(new Piece(squares.get(5) , Side.WHITE , Type.BISHOP));
+        pieces.add(new Piece(squares.get(6) , Side.WHITE , Type.KNIGHT));
+        pieces.add(new Piece(squares.get(7) , Side.WHITE , Type.ROOK));
         
-        pieces.add(new Rook(squares.get(56) , Side.BLACK));
-        pieces.add(new Knight(squares.get(57) , Side.BLACK));
-        pieces.add(new Bishop(squares.get(58) , Side.BLACK));
-        pieces.add(new Queen(squares.get(59) , Side.BLACK));
-        pieces.add(new King(squares.get(60) , Side.BLACK));
-        pieces.add(new Bishop(squares.get(61) , Side.BLACK));
-        pieces.add(new Knight(squares.get(62) , Side.BLACK));
-        pieces.add(new Rook(squares.get(63) , Side.BLACK));
+        pieces.add(new Piece(squares.get(56) , Side.BLACK , Type.ROOK));
+        pieces.add(new Piece(squares.get(57) , Side.BLACK , Type.KNIGHT));
+        pieces.add(new Piece(squares.get(58) , Side.BLACK , Type.BISHOP));
+        pieces.add(new Piece(squares.get(59) , Side.BLACK , Type.QUEEN));
+        pieces.add(new Piece(squares.get(60) , Side.BLACK , Type.KING));
+        pieces.add(new Piece(squares.get(61) , Side.BLACK , Type.BISHOP));
+        pieces.add(new Piece(squares.get(62) , Side.BLACK , Type.KNIGHT));
+        pieces.add(new Piece(squares.get(63) , Side.BLACK , Type.ROOK));
     }
 }

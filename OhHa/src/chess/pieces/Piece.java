@@ -2,13 +2,15 @@ package chess.pieces;
 
 import chess.board.Square;
 
-public abstract class Piece {
+public class Piece {
     private Square square;
     private Side side;
+    private Type type;
     
-    public Piece(Square square , Side side){
+    public Piece(Square square , Side side , Type type){
         this.square = square;
         this.side = side;
+        this.type = type;
     }
     
     public Square getSquare(){
@@ -21,6 +23,10 @@ public abstract class Piece {
     
     public Side getSide(){
         return side;
+    }
+    
+    public Type getType(){
+        return type;
     }
     
 }
