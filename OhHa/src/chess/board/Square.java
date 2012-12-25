@@ -1,18 +1,21 @@
 package chess.board;
 
+import chess.pieces.Side;
+
 public class Square {
-    private int x;
-    private int y;
+    private Side side;
     
-    public Square(int x , int y){
-        this.x = x;
-        this.y = y;
+    public Square(Side side){
+        this.side = side;
     }
     
-    public int getX(){
-        return x;
+    public Side getSide(){
+        return side;
     }
-    public int getY(){
-        return y;
+    
+    public void setSide(Side s){
+        side = s;
     }
+    
+    
 }

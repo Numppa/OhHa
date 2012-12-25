@@ -1,6 +1,6 @@
 package chess.pieces;
 
 public enum Side {
-    WHITE , BLACK
+    WHITE , BLACK , NEUTRAL
     
 }

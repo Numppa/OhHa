@@ -12,14 +12,16 @@ import static org.junit.Assert.*;
 
 
 public class TestLocator {
-    
-        Locator locator;
+        
+    Board board;
+    Locator locator;
 
 
     
     @Before
     public void setUp() {
-        locator = new Locator(new Board());
+        board = new Board();
+        locator = new Locator(board);
     }
     
     @After
@@ -27,26 +29,15 @@ public class TestLocator {
     }
     
     @Test
-    public void returnsRightCordinates1(){
+    public void returnsRightSquare(){
         Square square = locator.getSquare("a1");
-        assertEquals(square.getX() , 1);
-        assertEquals(square.getY() , 1);
+        assertEquals(square , board.getSquares()[0][0]);
     }
     
     @Test
-    public void returnsRightCordinates2(){
+    public void returnsRightSquare2(){
         Square square = locator.getSquare("e4");
-        assertEquals(square.getX() , 5);
-        assertEquals(square.getY() , 4);
+        assertEquals(square , board.getSquares()[4][3]);
     }
     
-    @Test
-    public void returnsRightString(){
-        Board board = new Board();
-        Locator l = new Locator(board);
-        
-        String string = l.squareToString(board.getSquares().get(17));
-        
-        assertEquals("b3", string);
-    }
 }

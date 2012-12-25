@@ -25,7 +25,7 @@ public class TestBoard {
     
     @Test
     public void thereAre64Squares(){
-        assertEquals(64 , board.getSquares().size());
+        assertEquals(64 , board.getSquares().length * board.getSquares().length);
     }
     
     @Test
@@ -43,9 +43,8 @@ public class TestBoard {
             }
         }
         
-        Locator locator = new Locator(board);
         
-        assertEquals("e1" , locator.squareToString(piece.getSquare()));
+        assertEquals(piece.getSquare() , board.getSquares()[4][0]);
     }
     
     @Test
@@ -58,9 +57,7 @@ public class TestBoard {
             }
         }
         
-        Locator locator = new Locator(board);
-        
-        assertEquals("d8" , locator.squareToString(piece.getSquare()));
+        assertEquals(piece.getSquare() , board.getSquares()[3][7]);
     }
     
     @Test

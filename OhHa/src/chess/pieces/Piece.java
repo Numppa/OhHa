@@ -18,7 +18,9 @@ public class Piece {
     }
     
     public void setSquare(Square s){
+        square.setSide(Side.NEUTRAL);
         square = s;
+        square.setSide(side);
     }
     
     public Side getSide(){
