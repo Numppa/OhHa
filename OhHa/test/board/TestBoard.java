@@ -2,7 +2,6 @@ package board;
 
 
 import chess.pieces.Type;
-import chess.board.Locator;
 import chess.pieces.Piece;
 import chess.board.Board;
 import chess.pieces.Side;
@@ -12,7 +11,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TestBoard {
-    Board board;
+    private Board board;
     
     @Before
     public void setUp() {

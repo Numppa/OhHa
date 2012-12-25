@@ -1,22 +1,22 @@
 package chess.logic;
 
 import chess.board.Board;
-import chess.board.Locator;
-import chess.board.Square;
+import chess.pieces.Piece;
 
 public class Logic {
     private Board board;
-    private Turn turn;
     
     
-    public Logic(Board board , Turn turn){
+    public Logic(Board board){
         this.board = board;
-        this.turn = turn;
     }
     
-    public boolean ownPieceExists(String string){
+    public boolean pieceCanBeMoved(Piece piece){
         return false;
     }
+    
+    
+    
     
     
 }

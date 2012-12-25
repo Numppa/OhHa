@@ -11,10 +11,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class TestLocator {
-        
-    Board board;
-    Locator locator;
+public class TestLocator {    
+    private Board board;
+    private Locator locator;
 
 
     

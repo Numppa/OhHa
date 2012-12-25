@@ -22,37 +22,34 @@ public class TextUi {
         this.scanner = new Scanner(System.in);
         this.board = board;
         
-        this.logic = new Logic(board , turn);
+        this.logic = new Logic(board);
         this.controls = new Controls(board);
     }
     
     
     
     public void run(){
-        System.out.println("komennot: (lataa) , (tallenna) , (uusi) , (undo) , lopeta tai (tee siirto)");
+        System.out.println("options: (load) , (save) , (new) , (undo) , quit or (make your move)");
         while (true){
             if (turn.getSide() == Side.WHITE){
-                System.out.println("Valkoinen siirtää");
+                System.out.println("White moves\n");
             } else {
-                System.out.println("Musta siirtää");
+                System.out.println("Black moves\n");
             }
             
-            System.out.println("Kirjoita ruutu, josta siirretään");
+            System.out.println("Write that square's name where the piece you want to move is standing");
             
             String command = scanner.nextLine();
             
             try{
-                
-            
-            
                 if (Integer.parseInt(command.substring(1)) > 0 && Integer.parseInt(command.substring(1)) < 9){
                     Locator locator = new Locator(board);
                     if (locator.getSquare(command) != null){
                         Square s = locator.getSquare(command);
                         if (s.getSide() != turn.getSide()){
-                            System.out.println("Ruudussa ei omaa nappulaa!");
+                            System.out.println("You have no piece in that square!");
                         } else {
-                            System.out.println("Ruutu " + command + " valittu");
+                            System.out.println("Square " + command + " selected");
                         }
                     }
                 }
@@ -62,7 +59,7 @@ public class TextUi {
             
             
             
-            if (command.equals("lopeta")){
+            if (command.equals("quit")){
                 break;
             }
                 

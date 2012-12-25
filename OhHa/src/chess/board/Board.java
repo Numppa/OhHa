@@ -31,6 +31,10 @@ public class Board {
             }
         }
         
+        
+        
+        
+        
         setUpPieces();
         
     }
