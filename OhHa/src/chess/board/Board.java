@@ -46,6 +46,18 @@ public class Board {
     public List<Piece> getPieces() {
         return pieces;
     }
+    
+    public Piece getPiece(Square s){
+        Piece p = null;
+        
+        for (Piece p1 : pieces) {
+            if (p1.getSquare() == s){
+                p = p1;
+                break;
+            }
+        }
+        return p;
+    }
 
     private void setUpPieces() {
         for (int i = 0; i < 8; i++) {

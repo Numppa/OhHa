@@ -70,4 +70,20 @@ public class TestBoard {
         assertEquals(16 , sum);
     }
     
+    @Test
+    public void getPieceWorks1(){
+        Piece piece = board.getPiece(board.getSquares()[3][1]);
+        
+        assertEquals(piece.getSide(), Side.WHITE);
+        assertEquals(piece.getType(), Type.PAWN);
+    }
+    
+    @Test
+    public void getPieceWorks2(){
+        Piece piece = board.getPiece(board.getSquares()[2][7]);
+        
+        assertEquals(piece.getSide(), Side.BLACK);
+        assertEquals(piece.getType(), Type.BISHOP);
+    }
+    
 }

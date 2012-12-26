@@ -2,10 +2,7 @@ package board;
 
 import chess.board.Board;
 import chess.logic.Logic;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -25,7 +22,7 @@ public class TestLogic {
     
     @Test
     public void canStartWithE2Pawn(){
-        assertTrue(true);
+        assertEquals(2 , logic.pieceCanMove(board.getPiece(board.getSquares()[4][1])).size());
     }
     
     
