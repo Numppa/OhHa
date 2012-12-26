@@ -9,22 +9,31 @@ import java.util.List;
 
 public class Logic {
     private Board board;
-    private boolean check;
-    
+    private List<Piece> checkers;
+    private Turn turn;
+    private boolean shortCastle;
+    private boolean longCastle;
     
     public Logic(Board board){
         this.board = board;
-        this.check = false;
+        this.checkers = new ArrayList<Piece>();
+        this.turn = new Turn();
+        this.longCastle = true;
+        this.shortCastle = true;
+    }
+    
+    public void startOfTurn(){
+        turn.next();
+        checkers = new ArrayList<Piece>();
+        
+        //update checkers
+        //is it checkmate
+        
     }
     
     
-    public boolean refreshCheck(){
-        return check;
-    }
     
-    
-    
-    
+
     public List<Square> pieceCanMove(Piece piece){
         ArrayList<Square> canMove = new ArrayList<Square>();
         
