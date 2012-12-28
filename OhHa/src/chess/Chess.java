@@ -1,7 +1,6 @@
 package chess;
 
 import chess.board.Board;
-import chess.logic.Logic;
 import chess.ui.TextUi;
 import chess.ui.Ui;
 import javax.swing.SwingUtilities;

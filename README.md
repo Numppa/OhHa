@@ -1,6 +1,4 @@
 OhHa
 ====
 
-Javalabra:
-
-(testi)
+Javalabra

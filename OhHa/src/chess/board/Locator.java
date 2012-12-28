@@ -9,7 +9,7 @@ public class Locator {
     
     
     public Square getSquare(String location){
-        int y = Integer.parseInt(location.substring(1));
+        int y = Integer.parseInt(location.substring(1)) - 1;
         
         int x = -1;
         

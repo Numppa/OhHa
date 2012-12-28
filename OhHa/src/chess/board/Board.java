@@ -89,4 +89,8 @@ public class Board {
         pieces.add(new Piece(squares[6][7] , Side.BLACK , Type.KNIGHT));
         pieces.add(new Piece(squares[7][7] , Side.BLACK , Type.ROOK));
     }
+    
+    public void killPiece(Piece piece){
+        pieces.remove(piece);
+    }
 }

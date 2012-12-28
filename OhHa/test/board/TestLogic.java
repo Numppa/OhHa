@@ -22,7 +22,7 @@ public class TestLogic {
     
     @Test
     public void canStartWithE2Pawn(){
-        assertEquals(2 , logic.pieceCanMove(board.getPiece(board.getSquares()[4][1])).size());
+        assertEquals(2 , logic.pieceCanMoveTo(board.getPiece(board.getSquares()[4][1])).size());
     }
     
     

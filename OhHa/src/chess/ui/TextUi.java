@@ -29,6 +29,8 @@ public class TextUi {
     
     
     public void run(){
+        
+        
         System.out.println("options: (load) , (save) , (new) , (undo) , quit or (make your move)");
         while (true){
             if (turn.getSide() == Side.WHITE){
