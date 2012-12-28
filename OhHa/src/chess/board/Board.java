@@ -17,17 +17,17 @@ public class Board {
         
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 8; j++) {
-                squares[j][i] = new Square(Side.WHITE);
+                squares[j][i] = new Square(j , i , Side.WHITE);
             }
         }
         for (int i = 2; i < 6; i++) {
             for (int j = 0; j < 8; j++) {
-                squares[j][i] = new Square(Side.NEUTRAL);
+                squares[j][i] = new Square(j , i , Side.NEUTRAL);
             }
         }
         for (int i = 6; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                squares[j][i] = new Square(Side.BLACK);
+                squares[j][i] = new Square(j , i , Side.BLACK);
             }
         }
         
