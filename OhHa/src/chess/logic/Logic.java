@@ -55,6 +55,10 @@ public class Logic {
     public ArrayList<Square> pieceCanMoveTo(Piece piece){
         ArrayList<Square> canMoveTo = new ArrayList<Square>();
         
+        if (getCheckingPieces().size() == 2 && piece.getType() != Type.KING){
+            return canMoveTo;
+        }
+        
         if (piece.getType() == Type.KING){
             canMoveTo = kingCanMoveTo(piece);
         }
@@ -461,8 +465,10 @@ public class Logic {
             }
             
             piece.setSquare(square);
-            if (getCheckingPieces().size() > 0){
-                cantMoveTo.add(square);
+            if (getCheckingPieces().size() == 1){
+                if (!getCheckingPieces().get(0).getSquare().equals(square)){
+                    cantMoveTo.add(square);
+                }
             }
             piece.setSquare(start);
             if (ownedByOpponent){
@@ -471,6 +477,7 @@ public class Logic {
                 turn.next();
             }
         }
+        squares.removeAll(cantMoveTo);
         
         return squares;
     }

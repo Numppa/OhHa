@@ -57,6 +57,15 @@ public class TestLogic {
         
     }
     
+    @Test
+    public void pawnPreventsCheck(){
+        board.getPiece(board.getSquares()[4][0]).setSquare(board.getSquares()[1][2]);
+        board.getPiece(board.getSquares()[3][7]).setSquare(board.getSquares()[6][2]);
+        
+        assertEquals(1, logic.pieceCanMoveTo(board.getPiece(board.getSquares()[2][1])).size());
+        assertEquals(2, logic.pieceCanMoveTo(board.getPiece(board.getSquares()[5][1])).size());
+    }
+    
     
     
     
