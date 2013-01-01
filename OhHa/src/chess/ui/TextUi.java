@@ -7,6 +7,7 @@ import chess.logic.Controls;
 import chess.logic.Logic;
 import chess.logic.Turn;
 import chess.pieces.Side;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -58,6 +59,12 @@ public class TextUi {
             } catch (Exception e){
             }
             
+            
+            board.killPiece(board.getPiece(board.getSquares()[5][0]));
+            ArrayList<Square> list = (ArrayList<Square>) logic.pieceCanMoveTo(board.getPiece(board.getSquares()[4][0]));
+            for (Square square : list) {
+                System.out.println(square.getSide() + "\n" + square.getX() + "\n" + square.getY());
+            }
             
             
             

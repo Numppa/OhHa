@@ -25,6 +25,39 @@ public class TestLogic {
         assertEquals(2 , logic.pieceCanMoveTo(board.getPiece(board.getSquares()[4][1])).size());
     }
     
+    @Test
+    public void kingCantMoveOnFirstTurn(){
+        assertEquals(0, logic.pieceCanMoveTo(board.getPiece(board.getSquares()[4][0])).size());
+    }
+    
+    @Test
+    public void kingCanMoveIfF1BishopIsAway(){
+        board.killPiece(board.getPiece(board.getSquares()[5][0]));
+        
+        assertEquals(1, logic.pieceCanMoveTo(board.getPiece(board.getSquares()[4][0])).size());
+    }
+    
+    @Test
+    public void kingCanDoShortCastle(){
+        board.killPiece(board.getPiece(board.getSquares()[5][0]));
+        board.killPiece(board.getPiece(board.getSquares()[6][0]));
+        
+        assertEquals(2, logic.pieceCanMoveTo(board.getPiece(board.getSquares()[4][0])).size());
+    }
+    
+    @Test
+    public void cantCastleIfChecked(){
+        board.killPiece(board.getPiece(board.getSquares()[5][0]));
+        board.killPiece(board.getPiece(board.getSquares()[6][0]));
+        board.killPiece(board.getPiece(board.getSquares()[4][1]));
+        board.getPiece(board.getSquares()[3][7]).setSquare(board.getSquares()[4][3]);
+        
+        assertEquals(1, logic.pieceCanMoveTo(board.getPiece(board.getSquares()[4][0])).size());
+        assertEquals(board.getSquares()[5][0] , logic.pieceCanMoveTo(board.getPiece(board.getSquares()[4][0])).get(0));
+        
+    }
+    
+    
     
     
 }

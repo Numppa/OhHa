@@ -53,20 +53,10 @@ public class Logic {
     public List<Square> pieceCanMoveTo(Piece piece){
         ArrayList<Square> canMoveTo = new ArrayList<Square>();
         
-        if (getCheckingPieces().size() == 2){
-            if (piece.getType() != Type.KING){
-                return canMoveTo;
-            }
+        if (piece.getType() == Type.KING){
             canMoveTo = kingCanMoveTo(piece);
         }
         
-        if (getCheckingPieces().size() == 1){
-            
-        }
-        
-        if (getCheckingPieces().isEmpty()){
-
-        }
         
         return canMoveTo;
     }
@@ -335,7 +325,7 @@ public class Logic {
         List<Piece> pieces = new ArrayList<Piece>();
         Piece king = null;
         
-        for (Piece piece : pieces) {
+        for (Piece piece : board.getPieces()) {
             if (piece.getSide() == turn.getSide() && piece.getType() == Type.KING){
                 king = piece;
             }

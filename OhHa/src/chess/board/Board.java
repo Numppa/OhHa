@@ -91,6 +91,7 @@ public class Board {
     }
     
     public void killPiece(Piece piece){
+        piece.getSquare().setSide(Side.NEUTRAL);
         pieces.remove(piece);
     }
 }
