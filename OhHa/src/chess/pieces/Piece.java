@@ -31,4 +31,8 @@ public class Piece {
         return type;
     }
     
+    public void setType(Type t){
+        type = t;
+    }
+    
 }

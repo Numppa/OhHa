@@ -13,12 +13,14 @@ public class Logic {
     private Turn turn;
     private boolean shortCastle;
     private boolean longCastle;
+    private Square enPassant;
     
     public Logic(Board board){
         this.board = board;
         this.turn = new Turn();
         this.longCastle = true;
         this.shortCastle = true;
+        this.enPassant = null;
     }
     
     public void startOfTurn(){
@@ -50,11 +52,15 @@ public class Logic {
     
     
 
-    public List<Square> pieceCanMoveTo(Piece piece){
+    public ArrayList<Square> pieceCanMoveTo(Piece piece){
         ArrayList<Square> canMoveTo = new ArrayList<Square>();
         
         if (piece.getType() == Type.KING){
             canMoveTo = kingCanMoveTo(piece);
+        }
+        
+        if (piece.getType() == Type.PAWN){
+            canMoveTo = pawnCanMoveTo(piece);
         }
         
         
@@ -402,6 +408,67 @@ public class Logic {
                     }
                     piece.setSquare(start);
                 }
+            }
+        }
+        
+        return squares;
+    }
+
+    private ArrayList<Square> pawnCanMoveTo(Piece piece) {
+        ArrayList<Square> squares = pawnsInfluence(piece);
+        ArrayList<Square> cantMoveTo = new ArrayList<Square>();
+        Square start = piece.getSquare();
+        
+        for (Square square : squares) {
+            if (square.getSide() == Side.NEUTRAL){
+                if (enPassant != null){
+                    if (!enPassant.equals(square));
+                        cantMoveTo.add(square);
+                } else {
+                    cantMoveTo.add(square);
+                }
+            }
+            if (square.getSide() == turn.getSide()){
+                cantMoveTo.add(square);
+            }
+        }
+        squares.removeAll(cantMoveTo);
+        
+        if (piece.getSide() == Side.WHITE){
+            if (board.getSquares()[piece.getSquare().getX()][piece.getSquare().getY() + 1].getSide() == Side.NEUTRAL){
+                squares.add(board.getSquares()[piece.getSquare().getX()][piece.getSquare().getY() + 1]);
+                if (piece.getSquare().getY() == 1 && board.getSquares()[piece.getSquare().getX()][piece.getSquare().getY() + 2].getSide() == Side.NEUTRAL){
+                    squares.add(board.getSquares()[piece.getSquare().getX()][piece.getSquare().getY() + 2]);
+                }
+            }
+        } else {
+            if (board.getSquares()[piece.getSquare().getX()][piece.getSquare().getY() - 1].getSide() == Side.NEUTRAL){
+                squares.add(board.getSquares()[piece.getSquare().getX()][piece.getSquare().getY() - 1]);
+                if (piece.getSquare().getY() == 6 && board.getSquares()[piece.getSquare().getX()][piece.getSquare().getY() - 2].getSide() == Side.NEUTRAL){
+                    squares.add(board.getSquares()[piece.getSquare().getX()][piece.getSquare().getY() - 2]);
+                }
+            }
+        }
+        
+        boolean ownedByOpponent = false;
+        
+        for (Square square : squares) {
+            
+            if (square.getSide() == Side.NEUTRAL){
+                ownedByOpponent = false;
+            } else {
+                ownedByOpponent = true;
+            }
+            
+            piece.setSquare(square);
+            if (getCheckingPieces().size() > 0){
+                cantMoveTo.add(square);
+            }
+            piece.setSquare(start);
+            if (ownedByOpponent){
+                turn.next();
+                square.setSide(turn.getSide());
+                turn.next();
             }
         }
         
