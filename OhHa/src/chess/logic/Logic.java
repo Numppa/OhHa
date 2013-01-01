@@ -67,6 +67,10 @@ public class Logic {
             canMoveTo = pawnCanMoveTo(piece);
         }
         
+        if (piece.getType() == Type.KNIGHT){
+            canMoveTo = knightCanMoveTo(piece);
+        }
+        
         
         return canMoveTo;
     }
@@ -405,7 +409,7 @@ public class Logic {
                 }
             }
             if (longCastle && squares.contains(board.getSquares()[3][0])){
-                if (board.getSquares()[2][0].getSide() == Side.NEUTRAL){
+                if (board.getSquares()[2][0].getSide() == Side.NEUTRAL && board.getSquares()[1][0].getSide() == Side.NEUTRAL){
                     piece.setSquare(board.getSquares()[2][0]);
                     if (getCheckingPieces().isEmpty()){
                         squares.add(board.getSquares()[2][0]);
@@ -466,6 +470,49 @@ public class Logic {
             
             piece.setSquare(square);
             if (getCheckingPieces().size() == 1){
+                if (!getCheckingPieces().get(0).getSquare().equals(square)){
+                    cantMoveTo.add(square);
+                }
+            } else if (getCheckingPieces().size() == 2){
+                cantMoveTo.add(square);
+            }
+            piece.setSquare(start);
+            if (ownedByOpponent){
+                turn.next();
+                square.setSide(turn.getSide());
+                turn.next();
+            }
+        }
+        squares.removeAll(cantMoveTo);
+        
+        return squares;
+    }
+
+    private ArrayList<Square> knightCanMoveTo(Piece piece) {
+        ArrayList<Square> squares = knightsInfluence(piece);
+        ArrayList<Square> cantMoveTo = new ArrayList<Square>();
+        Square start = piece.getSquare();
+        
+        for (Square square : squares) {
+            if (square.getSide() == turn.getSide()){
+                cantMoveTo.add(square);
+            }
+        }
+        squares.removeAll(cantMoveTo);
+        
+        boolean ownedByOpponent = false;
+        
+        for (Square square : squares) {
+            if (square.getSide() == Side.NEUTRAL){
+                ownedByOpponent = false;
+            } else {
+                ownedByOpponent = true;
+            }
+            piece.setSquare(square);
+            
+            if (getCheckingPieces().size() == 2){
+                cantMoveTo.add(square);
+            } else if (getCheckingPieces().size() == 1){
                 if (!getCheckingPieces().get(0).getSquare().equals(square)){
                     cantMoveTo.add(square);
                 }

@@ -66,7 +66,10 @@ public class TestLogic {
         assertEquals(2, logic.pieceCanMoveTo(board.getPiece(board.getSquares()[5][1])).size());
     }
     
-    
+    @Test
+    public void knightCanMake2DifferentOpeningMoves(){
+        assertEquals(2, logic.pieceCanMoveTo(board.getPiece(board.getSquares()[1][0])).size());
+    }
     
     
 }
