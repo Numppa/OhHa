@@ -4,7 +4,7 @@
 2h pähkäilyä
 
 18.1.2012
-2h koodausta ja testejä
+2h koodausta
 
 19.12.2012
 2h luokkakaavion tekeminen, refaktorointia ja pientä lisäystä
@@ -17,3 +17,6 @@
 
 28.12.2012
 3h koodausta
+
+1.12.2013
+4h ankaraa koodausta
