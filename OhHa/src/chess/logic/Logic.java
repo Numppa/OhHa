@@ -53,8 +53,11 @@ public class Logic {
     public List<Square> pieceCanMoveTo(Piece piece){
         ArrayList<Square> canMoveTo = new ArrayList<Square>();
         
-        if (getCheckingPieces().size() == 2 && piece.getType() != Type.KING){
-            return canMoveTo;
+        if (getCheckingPieces().size() == 2){
+            if (piece.getType() != Type.KING){
+                return canMoveTo;
+            }
+            canMoveTo = kingCanMoveTo(piece);
         }
         
         if (getCheckingPieces().size() == 1){
@@ -62,9 +65,7 @@ public class Logic {
         }
         
         if (getCheckingPieces().isEmpty()){
-            if (pieceCanBeRemoved(piece)){
-                
-            }
+
         }
         
         return canMoveTo;
@@ -78,29 +79,29 @@ public class Logic {
         ArrayList<Square> squares = new ArrayList<Square>();
         
         if (piece.getType() == Type.KNIGHT){
-            squares = (ArrayList<Square>) knightsInfluence(piece);
+            squares = knightsInfluence(piece);
         }
         if (piece.getType() == Type.BISHOP){
-            squares = (ArrayList<Square>) bishopsInfluence(piece);
+            squares = bishopsInfluence(piece);
         }
         if (piece.getType() == Type.ROOK){
-            squares = (ArrayList<Square>) rooksInfluence(piece);
+            squares = rooksInfluence(piece);
         }
         if (piece.getType() == Type.QUEEN){
-            squares = (ArrayList<Square>) queensInfluence(piece);
+            squares = queensInfluence(piece);
         }
         if (piece.getType() == Type.KING){
-           squares = (ArrayList<Square>) kingsInfluence(piece);
+           squares = kingsInfluence(piece);
         }
         if (piece.getType() == Type.PAWN){
-            squares = (ArrayList<Square>) pawnsInfluence(piece);
+            squares = pawnsInfluence(piece);
         }
         
         return squares;
     }
     
-    private List<Square> knightsInfluence(Piece piece){
-        List<Square> squares = new ArrayList<Square>();
+    private ArrayList<Square> knightsInfluence(Piece piece){
+        ArrayList<Square> squares = new ArrayList<Square>();
         try {
             squares.add(board.getSquares()[piece.getSquare().getX() + 1][piece.getSquare().getY() + 2]);
         } catch (Exception e){
@@ -136,8 +137,8 @@ public class Logic {
         
         return squares;
     }
-    private List<Square> bishopsInfluence(Piece piece){
-        List<Square> squares = new ArrayList<Square>();
+    private ArrayList<Square> bishopsInfluence(Piece piece){
+        ArrayList<Square> squares = new ArrayList<Square>();
         
         int x = piece.getSquare().getX();
         int y = piece.getSquare().getY();
@@ -202,8 +203,8 @@ public class Logic {
         return squares;
     }
     
-    private List<Square> rooksInfluence(Piece piece){
-        List<Square> squares = new ArrayList<Square>();
+    private ArrayList<Square> rooksInfluence(Piece piece){
+        ArrayList<Square> squares = new ArrayList<Square>();
         int x = piece.getSquare().getX();
         int y = piece.getSquare().getY();
         
@@ -261,14 +262,14 @@ public class Logic {
         
         return squares;
     }
-    private List<Square> queensInfluence(Piece piece){
-        List<Square> squares = bishopsInfluence(piece);
+    private ArrayList<Square> queensInfluence(Piece piece){
+        ArrayList<Square> squares = bishopsInfluence(piece);
         squares.addAll(rooksInfluence(piece));
         return squares;
     }
     
-    private List<Square> kingsInfluence(Piece piece){
-        List<Square> squares = new ArrayList<Square>();
+    private ArrayList<Square> kingsInfluence(Piece piece){
+        ArrayList<Square> squares = new ArrayList<Square>();
         
         try{
             squares.add(board.getSquares()[piece.getSquare().getX() - 1][piece.getSquare().getY() - 1]);
@@ -305,8 +306,8 @@ public class Logic {
         
         return squares;
     }
-    private List<Square> pawnsInfluence(Piece piece){
-        List<Square> squares = new ArrayList<Square>();
+    private ArrayList<Square> pawnsInfluence(Piece piece){
+        ArrayList<Square> squares = new ArrayList<Square>();
         
         if (piece.getSide() == Side.WHITE){
             try{
@@ -355,13 +356,68 @@ public class Logic {
         return pieces;
     }
 
-    private boolean pieceCanBeRemoved(Piece piece) {
+    private ArrayList<Square> kingCanMoveTo(Piece piece) {
+        ArrayList<Square> squares = kingsInfluence(piece);
+        Square start = piece.getSquare();
         
+        ArrayList<Square> cantMoveTo = new ArrayList<Square>();
         
+        for (Square square : squares) {
+            if (square.getSide() == turn.getSide()){
+                cantMoveTo.add(square);
+            }
+        }
+        squares.removeAll(cantMoveTo);
         
+        boolean ownedByOpponent = false;
         
+        for (Square square : squares) {
+            if (square.getSide() == Side.NEUTRAL){
+                ownedByOpponent = false;
+            } else {
+                ownedByOpponent = true;
+            }
+            
+            piece.setSquare(square);
+            
+            if (getCheckingPieces().size() > 0){
+                cantMoveTo.add(square);
+            }
+            
+            piece.setSquare(start);
+            if (ownedByOpponent){
+                turn.next();
+                square.setSide(turn.getSide());
+                turn.next();
+            }
+        }
         
-        return false;
+        squares.removeAll(cantMoveTo);
+        
+        if (getCheckingPieces().isEmpty()){
+            if (shortCastle && squares.contains(board.getSquares()[5][0])){
+                if (board.getSquares()[6][0].getSide() == Side.NEUTRAL){
+                    piece.setSquare(board.getSquares()[6][0]);
+                    if (getCheckingPieces().isEmpty()){
+                        squares.add(board.getSquares()[6][0]);
+                    }
+                    piece.setSquare(start);
+                }
+            }
+            if (longCastle && squares.contains(board.getSquares()[3][0])){
+                if (board.getSquares()[2][0].getSide() == Side.NEUTRAL){
+                    piece.setSquare(board.getSquares()[2][0]);
+                    if (getCheckingPieces().isEmpty()){
+                        squares.add(board.getSquares()[2][0]);
+                    }
+                    piece.setSquare(start);
+                }
+            }
+        }
+        
+        return squares;
     }
+
+
     
 }

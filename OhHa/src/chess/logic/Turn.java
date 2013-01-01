@@ -6,7 +6,6 @@ public class Turn {
     private Side side;
     
     
-    
     public Turn(){
         this.side = Side.WHITE;
     }
