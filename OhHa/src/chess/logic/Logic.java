@@ -11,15 +11,19 @@ import java.util.List;
 public class Logic {
     private Board board;
     private Turn turn;
-    private boolean shortCastle;
-    private boolean longCastle;
+    private boolean shortCastleWhite;
+    private boolean longCastleWhite;
+    private boolean shortCastleBlack;
+    private boolean longCastleBlack;
     private Square enPassant;
     
     public Logic(Board board){
         this.board = board;
         this.turn = new Turn();
-        this.longCastle = true;
-        this.shortCastle = true;
+        this.longCastleWhite = true;
+        this.shortCastleWhite = true;
+        this.longCastleBlack = true;
+        this.shortCastleBlack = true;
         this.enPassant = null;
     }
     
@@ -29,6 +33,22 @@ public class Logic {
     
     public void setEnPassant(Square square){
         enPassant = square;
+    }
+    
+    public void LockShortCastleWhite(){
+        shortCastleWhite = false;
+    }
+    
+    public void LockLongCastleWhite(){
+        longCastleWhite = false;
+    }
+    
+    public void LockShortCastleBlack(){
+        shortCastleBlack = false;
+    }
+    
+    public void LockLongCastleBlack(){
+        longCastleBlack = false;
     }
     
     public boolean checkmate(){
@@ -402,22 +422,44 @@ public class Logic {
         squares.removeAll(cantMoveTo);
         
         if (getCheckingPieces().isEmpty()){
-            if (shortCastle && squares.contains(board.getSquares()[5][0])){
-                if (board.getSquares()[6][0].getSide() == Side.NEUTRAL){
-                    piece.setSquare(board.getSquares()[6][0]);
-                    if (getCheckingPieces().isEmpty()){
-                        squares.add(board.getSquares()[6][0]);
+            if (turn.getSide() == Side.WHITE){
+                if (shortCastleWhite && squares.contains(board.getSquares()[5][0])){
+                    if (board.getSquares()[6][0].getSide() == Side.NEUTRAL){
+                        piece.setSquare(board.getSquares()[6][0]);
+                        if (getCheckingPieces().isEmpty()){
+                            squares.add(board.getSquares()[6][0]);
+                        }
+                        piece.setSquare(start);
                     }
-                    piece.setSquare(start);
+                }
+                if (longCastleWhite && squares.contains(board.getSquares()[3][0])){
+                    if (board.getSquares()[2][0].getSide() == Side.NEUTRAL && board.getSquares()[1][0].getSide() == Side.NEUTRAL){
+                        piece.setSquare(board.getSquares()[2][0]);
+                        if (getCheckingPieces().isEmpty()){
+                            squares.add(board.getSquares()[2][0]);
+                        }
+                        piece.setSquare(start);
+                    }
                 }
             }
-            if (longCastle && squares.contains(board.getSquares()[3][0])){
-                if (board.getSquares()[2][0].getSide() == Side.NEUTRAL && board.getSquares()[1][0].getSide() == Side.NEUTRAL){
-                    piece.setSquare(board.getSquares()[2][0]);
-                    if (getCheckingPieces().isEmpty()){
-                        squares.add(board.getSquares()[2][0]);
+            if (turn.getSide() == Side.BLACK){
+                if (shortCastleBlack && squares.contains(board.getSquares()[5][7])){
+                    if (board.getSquares()[6][7].getSide() == Side.NEUTRAL){
+                        piece.setSquare(board.getSquares()[6][7]);
+                        if (getCheckingPieces().isEmpty()){
+                            squares.add(board.getSquares()[6][7]);
+                        }
+                        piece.setSquare(start);
                     }
-                    piece.setSquare(start);
+                }
+                if (longCastleBlack && squares.contains(board.getSquares()[3][7])){
+                    if (board.getSquares()[2][7].getSide() == Side.NEUTRAL && board.getSquares()[1][7].getSide() == Side.NEUTRAL){
+                        piece.setSquare(board.getSquares()[2][7]);
+                        if (getCheckingPieces().isEmpty()){
+                            squares.add(board.getSquares()[2][7]);
+                        }
+                        piece.setSquare(start);
+                    }
                 }
             }
         }

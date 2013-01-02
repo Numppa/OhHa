@@ -24,7 +24,7 @@ public class TextUi {
         this.board = board;
         
         this.logic = new Logic(board);
-        this.controls = new Controls(board);
+        this.controls = new Controls(board , logic);
     }
     
     
