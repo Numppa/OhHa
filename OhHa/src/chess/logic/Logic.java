@@ -25,28 +25,36 @@ public class Logic {
     
     public void startOfTurn(){
         turn.next();
-        
-        
+    }
+    
+    public void setEnPassant(Square square){
+        enPassant = square;
     }
     
     public boolean checkmate(){
-        Piece king = null;
-        for (Piece piece : board.getPieces()) {
-            if (piece.getSide() == turn.getSide() && piece.getType() == Type.KING){
-                king = piece;
-            }
-        }
-        if (pieceCanMoveTo(king).size() > 0 || getCheckingPieces().isEmpty()){
+        
+        if (getCheckingPieces().isEmpty()){
             return false;
         }
         
-        if (getCheckingPieces().size() == 2){
-            return true;
+        for (Piece piece : board.getPieces()) {
+            if (piece.getSide() == turn.getSide() && pieceCanMoveTo(piece).size() > 0){
+                return false;
+            }
         }
-        if (getCheckingPieces().size() == 1){
-            
+        return true;
+    }
+    
+    public boolean stalemate(){
+        if (getCheckingPieces().size() > 0){
+            return false;
         }
-        return false;
+        for (Piece piece : board.getPieces()) {
+            if (piece.getSide() == turn.getSide() && pieceCanMoveTo(piece).size() > 0){
+                return false;
+            }
+        }
+        return true;
     }
     
     
@@ -425,8 +433,9 @@ public class Logic {
         for (Square square : squares) {
             if (square.getSide() == Side.NEUTRAL){
                 if (enPassant != null){
-                    if (!enPassant.equals(square));
+                    if (!enPassant.equals(square)){
                         cantMoveTo.add(square);
+                    }
                 } else {
                     cantMoveTo.add(square);
                 }
@@ -523,9 +532,4 @@ public class Logic {
         
         return squares;
     }
-
-
-
-
-    
 }

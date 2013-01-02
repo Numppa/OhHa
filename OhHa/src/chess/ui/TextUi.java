@@ -59,8 +59,11 @@ public class TextUi {
             } catch (Exception e){
             }
             
-            
-            
+            logic.setEnPassant(board.getSquares()[1][2]);
+            ArrayList<Square> s = logic.pieceCanMoveTo(board.getPiece(board.getSquares()[0][1]));
+            for (Square square : s) {
+                System.out.println(square.getX() + " " + square.getY());
+            }
             
             if (command.equals("quit")){
                 break;
