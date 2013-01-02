@@ -61,16 +61,11 @@ public class Logic {
         
         if (piece.getType() == Type.KING){
             canMoveTo = kingCanMoveTo(piece);
-        }
-        
-        if (piece.getType() == Type.PAWN){
+        } else if (piece.getType() == Type.PAWN){
             canMoveTo = pawnCanMoveTo(piece);
+        } else {
+            canMoveTo = XCanMoveTo(piece);
         }
-        
-        if (piece.getType() == Type.KNIGHT){
-            canMoveTo = knightCanMoveTo(piece);
-        }
-        
         
         return canMoveTo;
     }
@@ -79,7 +74,7 @@ public class Logic {
 
     
     
-    private List<Square> PiecesInfluence(Piece piece){
+    private ArrayList<Square> piecesInfluence(Piece piece){
         ArrayList<Square> squares = new ArrayList<Square>();
         
         if (piece.getType() == Type.KNIGHT){
@@ -347,7 +342,7 @@ public class Logic {
         
         for (Piece piece : board.getPieces()) {
             if (piece.getSide() != turn.getSide()){
-                List<Square> squares = PiecesInfluence(piece);
+                List<Square> squares = piecesInfluence(piece);
                 for (Square square : squares) {
                     if (square == king.getSquare()){
                         pieces.add(piece);
@@ -373,13 +368,13 @@ public class Logic {
         }
         squares.removeAll(cantMoveTo);
         
-        boolean ownedByOpponent = false;
+        boolean occupiedByOpponent = false;
         
         for (Square square : squares) {
             if (square.getSide() == Side.NEUTRAL){
-                ownedByOpponent = false;
+                occupiedByOpponent = false;
             } else {
-                ownedByOpponent = true;
+                occupiedByOpponent = true;
             }
             
             piece.setSquare(square);
@@ -389,7 +384,7 @@ public class Logic {
             }
             
             piece.setSquare(start);
-            if (ownedByOpponent){
+            if (occupiedByOpponent){
                 turn.next();
                 square.setSide(turn.getSide());
                 turn.next();
@@ -458,14 +453,14 @@ public class Logic {
             }
         }
         
-        boolean ownedByOpponent = false;
+        boolean occupiedByOpponent = false;
         
         for (Square square : squares) {
             
             if (square.getSide() == Side.NEUTRAL){
-                ownedByOpponent = false;
+                occupiedByOpponent = false;
             } else {
-                ownedByOpponent = true;
+                occupiedByOpponent = true;
             }
             
             piece.setSquare(square);
@@ -477,7 +472,7 @@ public class Logic {
                 cantMoveTo.add(square);
             }
             piece.setSquare(start);
-            if (ownedByOpponent){
+            if (occupiedByOpponent){
                 turn.next();
                 square.setSide(turn.getSide());
                 turn.next();
@@ -488,8 +483,8 @@ public class Logic {
         return squares;
     }
 
-    private ArrayList<Square> knightCanMoveTo(Piece piece) {
-        ArrayList<Square> squares = knightsInfluence(piece);
+    private ArrayList<Square> XCanMoveTo(Piece piece) {
+        ArrayList<Square> squares = piecesInfluence(piece);
         ArrayList<Square> cantMoveTo = new ArrayList<Square>();
         Square start = piece.getSquare();
         
@@ -500,13 +495,13 @@ public class Logic {
         }
         squares.removeAll(cantMoveTo);
         
-        boolean ownedByOpponent = false;
+        boolean occupiedByOpponent = false;
         
         for (Square square : squares) {
             if (square.getSide() == Side.NEUTRAL){
-                ownedByOpponent = false;
+                occupiedByOpponent = false;
             } else {
-                ownedByOpponent = true;
+                occupiedByOpponent = true;
             }
             piece.setSquare(square);
             
@@ -518,7 +513,7 @@ public class Logic {
                 }
             }
             piece.setSquare(start);
-            if (ownedByOpponent){
+            if (occupiedByOpponent){
                 turn.next();
                 square.setSide(turn.getSide());
                 turn.next();
@@ -528,6 +523,8 @@ public class Logic {
         
         return squares;
     }
+
+
 
 
     

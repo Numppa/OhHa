@@ -71,5 +71,17 @@ public class TestLogic {
         assertEquals(2, logic.pieceCanMoveTo(board.getPiece(board.getSquares()[1][0])).size());
     }
     
+    @Test
+    public void cBishopMovesRightIfDpawnIsAway(){
+        board.killPiece(board.getPiece(board.getSquares()[3][1]));
+        assertEquals(5, logic.pieceCanMoveTo(board.getPiece(board.getSquares()[2][0])).size());
+    }
+    
+    @Test
+    public void queenCanMoveTo19DifferentSquares(){
+        board.getPiece(board.getSquares()[3][0]).setSquare(board.getSquares()[4][3]);
+        assertEquals(19, logic.pieceCanMoveTo(board.getPiece(board.getSquares()[4][3])).size());
+    }
+    
     
 }
