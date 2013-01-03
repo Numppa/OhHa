@@ -5,6 +5,8 @@ import chess.board.Locator;
 import chess.board.Square;
 import chess.logic.Controls;
 import chess.logic.Logic;
+import chess.pieces.Piece;
+import chess.pieces.Type;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -28,7 +30,7 @@ public class TextUi {
     public void run() throws IOException{
         
         
-        System.out.println("options: \"quit\" or(make your move");
+        System.out.println("options: quit , new , save , load , undo , or make your move");
         while (true){
             isItOver();            
             System.out.println(logic.getTurn().getSide() + " moves");
@@ -39,14 +41,27 @@ public class TextUi {
             }
             
             if (command.equals("quit")){
+                System.out.println("bye");
                 break;
+            }
+            
+            if (command.equals("new")){
+                controls.newGame();
+                System.out.println("a new game starts");
+            }
+            
+            if (command.equals("undo")){
+                controls.undo();
+                System.out.println("one move taken back");
             }
             
             if (command.equals("save")){
                 controls.save();
+                System.out.println("game saved");
             }
             if (command.equals("load")){
                 controls.loadGame();
+                System.out.println("game loaded");
             }
     }
 }
@@ -104,8 +119,34 @@ public class TextUi {
                 continue;
             }
             System.out.println("piece moved");
-            controls.makeAMove(board.getPiece(square), square2, false);
+            boolean promotion = controls.makeAMove(board.getPiece(square), square2, false);
+            if (promotion){
+                promote(board.getPiece(square2));
+            }
             break;
         }
+    }
+
+    private void promote(Piece piece) {
+        while (true){
+            System.out.println("promotion: queen , rook , knight or bishop");
+            String command = scanner.nextLine();
+            if (command.equals("queen")){
+                controls.promote(piece, Type.QUEEN);
+                break;
+            } else if (command.equals("rook")){
+                controls.promote(piece, Type.ROOK);
+                break;
+            } else if (command.equals("knight")){
+                controls.promote(piece, Type.KNIGHT);
+                break;
+            } else if (command.equals("bishop")){
+                controls.promote(piece, Type.BISHOP);
+                break;
+            } else {
+                System.out.println("invalid command");
+            }
+        }
+        System.out.println("pawn promoted to " + piece.getType());
     }
 }
