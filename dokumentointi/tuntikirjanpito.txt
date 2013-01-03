@@ -23,3 +23,6 @@
 
 2.12.2013
 4h armotonta koodausta
+
+3.12.2013
+6h koodausta, kaikki muu valmista, paitsi käyttöliittymä
