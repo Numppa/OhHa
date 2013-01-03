@@ -6,6 +6,8 @@ import chess.pieces.Piece;
 import chess.pieces.Side;
 import chess.pieces.Type;
 import chess.saving.Moves;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Controls {
     private Board board;
@@ -17,6 +19,15 @@ public class Controls {
         this.board = board;
         this.logic = logic;
         this.moves = new Moves();
+    }
+    
+    public void save() throws IOException{
+        moves.save();
+    }
+    
+    public void loadGame() throws FileNotFoundException{
+        moves.load();
+        loadPosition();
     }
     
     public boolean makeAMove(Piece piece , Square square , boolean loading){
@@ -48,13 +59,13 @@ public class Controls {
     
     public void newGame(){
         moves = new Moves();
-        board = new Board();
-        logic = new Logic(board);
+        board.StartingPosition();
+        logic.setUp();
     }
     
     public void loadPosition(){
-        board = new Board();
-        logic = new Logic(board);
+        board.StartingPosition();
+        logic.setUp();
         
         for (String string : moves.getLog()) {
             Piece piece = board.getPiece(board.getSquares()[Integer.parseInt(string.substring(0, 1))][Integer.parseInt(string.substring(1, 2))]);

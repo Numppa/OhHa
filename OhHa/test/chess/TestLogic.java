@@ -122,6 +122,8 @@ public class TestLogic {
         board.getPiece(board.getSquares()[3][7]).setSquare(board.getSquares()[1][3]);
         board.getPiece(board.getSquares()[4][7]).setSquare(board.getSquares()[2][1]);
         
+        logic.stalemate();
+        
         assertTrue(logic.stalemate());
         assertFalse(logic.checkmate());
     }

@@ -5,9 +5,7 @@ import chess.board.Locator;
 import chess.board.Square;
 import chess.logic.Controls;
 import chess.logic.Logic;
-import chess.logic.Turn;
-import chess.pieces.Side;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -27,10 +25,10 @@ public class TextUi {
     
     
     
-    public void run(){
+    public void run() throws IOException{
         
         
-        System.out.println("options: (load) , (save) , (new) , (undo) , quit or (make your move)");
+        System.out.println("options: \"quit\" or(make your move");
         while (true){
             isItOver();            
             System.out.println(logic.getTurn().getSide() + " moves");
@@ -42,6 +40,13 @@ public class TextUi {
             
             if (command.equals("quit")){
                 break;
+            }
+            
+            if (command.equals("save")){
+                controls.save();
+            }
+            if (command.equals("load")){
+                controls.loadGame();
             }
     }
 }

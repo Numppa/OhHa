@@ -31,6 +31,17 @@ public class Logic {
         turn.next();
     }
     
+    public void setUp(){
+        enPassant = null;
+        longCastleBlack = true;
+        longCastleWhite = true;
+        shortCastleBlack = true;
+        shortCastleWhite = true;
+        if (turn.getSide() == Side.BLACK){
+            turn.next();
+        }
+    }
+    
     public void setEnPassant(Square square){
         enPassant = square;
     }
@@ -70,7 +81,6 @@ public class Logic {
     }
     
     public boolean stalemate(){
-        boolean stalemate = true;
         if (getCheckingPieces().size() > 0){
             return false;
         }
@@ -80,9 +90,11 @@ public class Logic {
             }
         }
         
-        stalemate = tooFewPieces();
+        if (tooFewPieces()){
+            return true;
+        }
         
-        return stalemate;
+        return true;
     }
     
     

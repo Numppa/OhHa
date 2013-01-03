@@ -2,14 +2,21 @@ package chess.saving;
 
 import chess.board.Square;
 import chess.pieces.Piece;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Moves {
     ArrayList<String> log;
+    File file;
     
-    public Moves(){
+    public Moves() {
         this.log = new ArrayList<String>();
+        this.file = new File("save");
     }
     
     public void addMove(Piece piece , Square square){
@@ -26,6 +33,20 @@ public class Moves {
         return log;
     }
     
+    public void save() throws IOException{
+        FileWriter filewriter = new FileWriter(file);
+        for (String string : log) {
+            filewriter.write(string + "\n");
+        }
+        filewriter.close();
+    }
     
+    public void load() throws FileNotFoundException{
+        Scanner scanner = new Scanner(file);
+        log = new ArrayList<String>();
+        while (scanner.hasNextLine()){
+            log.add(scanner.nextLine());
+        }
+    }
     
 }
