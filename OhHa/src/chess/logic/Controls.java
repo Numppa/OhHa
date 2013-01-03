@@ -5,15 +5,18 @@ import chess.board.Square;
 import chess.pieces.Piece;
 import chess.pieces.Side;
 import chess.pieces.Type;
+import chess.saving.Moves;
 
 public class Controls {
     private Board board;
     private Logic logic;
+    private Moves moves;
     
     
     public Controls(Board board , Logic logic){
         this.board = board;
         this.logic = logic;
+        this.moves = new Moves();
     }
     
     public boolean makeAMove(Piece piece , Square square){
@@ -73,5 +76,11 @@ public class Controls {
         
         return willPromote;
     }
+    
+    public void promote(Piece piece , Type type){
+        piece.setType(type);
+    }
+    
+    
     
 }
