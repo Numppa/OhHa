@@ -18,10 +18,10 @@ public class TextUi {
     private Logic logic;
     private Controls controls;
     
-    public TextUi(Board board){
+    public TextUi(){
         this.turn = new Turn();
         this.scanner = new Scanner(System.in);
-        this.board = board;
+        this.board = new Board();
         
         this.logic = new Logic(board);
         this.controls = new Controls(board , logic);

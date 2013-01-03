@@ -27,7 +27,7 @@ public class Logic {
         this.enPassant = null;
     }
     
-    public void startOfTurn(){
+    public void nextTurn(){
         turn.next();
     }
     
@@ -35,19 +35,19 @@ public class Logic {
         enPassant = square;
     }
     
-    public void LockShortCastleWhite(){
+    public void blockShortCastleWhite(){
         shortCastleWhite = false;
     }
     
-    public void LockLongCastleWhite(){
+    public void blockLongCastleWhite(){
         longCastleWhite = false;
     }
     
-    public void LockShortCastleBlack(){
+    public void blockShortCastleBlack(){
         shortCastleBlack = false;
     }
     
-    public void LockLongCastleBlack(){
+    public void blockLongCastleBlack(){
         longCastleBlack = false;
     }
     

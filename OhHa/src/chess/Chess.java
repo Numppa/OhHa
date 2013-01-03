@@ -1,6 +1,5 @@
 package chess;
 
-import chess.board.Board;
 import chess.ui.TextUi;
 import chess.ui.Ui;
 import javax.swing.SwingUtilities;
@@ -8,13 +7,11 @@ import javax.swing.SwingUtilities;
 public class Chess {
     private Ui ui;
     private TextUi textUi;
-    private Board board;
     
     
     public Chess(){
-        this.board = new Board(); 
         this.ui = new Ui();
-        this.textUi = new TextUi(board);
+        this.textUi = new TextUi();
     }
     
     public void run(){

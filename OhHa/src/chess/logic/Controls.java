@@ -19,29 +19,69 @@ public class Controls {
         this.moves = new Moves();
     }
     
-    public boolean makeAMove(Piece piece , Square square){
+    public boolean makeAMove(Piece piece , Square square , boolean loading){
         boolean willPromote = false;
-        if (piece.getSquare().equals(board.getSquares()[0][0])){
-            logic.LockLongCastleWhite();
-        }
-        if (piece.getSquare().equals(board.getSquares()[7][0])){
-            logic.LockShortCastleWhite();
-        }
-        if (piece.getSquare().equals(board.getSquares()[7][0])){
-            logic.LockLongCastleBlack();
-        }
-        if (piece.getSquare().equals(board.getSquares()[7][7])){
-            logic.LockShortCastleBlack();
-        }
-        if (piece.getSquare().equals(board.getSquares()[4][0])){
-            logic.LockLongCastleWhite();
-            logic.LockShortCastleWhite();
-        }
-        if (piece.getSquare().equals(board.getSquares()[4][7])){
-            logic.LockLongCastleBlack();
-            logic.LockShortCastleBlack();
+        blockCastlingIfNeeded(piece);
+        ifMoveDoesCastle(piece, square);
+        
+        logic.setEnPassant(null);
+        
+        if (piece.getType() == Type.PAWN){
+            willPromote = monitorEnPassantLongMoveAndPromotion(square, piece, willPromote);
         }
         
+        if (square.getSide() != Side.NEUTRAL){
+            board.killPiece(board.getPiece(square));
+        }
+        
+
+        
+        if (!loading){
+            moves.addMove(piece, square);
+        }
+        
+        piece.setSquare(square);
+        logic.nextTurn();
+        
+        return willPromote;
+    }
+    
+    public void loadPosition(){
+        board = new Board();
+        logic = new Logic(board);
+        
+        for (String string : moves.getLog()) {
+            Piece piece = board.getPiece(board.getSquares()[Integer.parseInt(string.substring(0, 1))][Integer.parseInt(string.substring(1, 2))]);
+            Square square = board.getSquares()[Integer.parseInt(string.substring(2, 3))][Integer.parseInt(string.substring(3, 4))];
+            makeAMove(piece, square, true);
+        }
+    }
+    
+    public void undo(){
+        moves.removeLast();
+        loadPosition();
+    }
+    
+    
+    
+
+    private boolean monitorEnPassantLongMoveAndPromotion(Square square, Piece piece, boolean willPromote) {
+        if (square.getSide() == Side.NEUTRAL && square.getX() != piece.getSquare().getX()){
+            board.killPiece(board.getPiece(board.getSquares()[square.getX()][piece.getSquare().getY()]));
+        }
+        if (square.getY() - piece.getSquare().getY() == 2){
+            logic.setEnPassant(board.getSquares()[square.getX()][square.getY() - 1]);
+        }
+        if (square.getY() - piece.getSquare().getY() == - 2){
+            logic.setEnPassant(board.getSquares()[square.getX()][square.getY() + 1]);
+        }
+        if (square.getY() == 0 || square.getY() == 7){
+            willPromote = true;
+        }
+        return willPromote;
+    }
+
+    private void ifMoveDoesCastle(Piece piece, Square square) {
         if (piece.getType() == Type.KING){
             if (piece.getSquare().getX() - square.getX() == 2){
                 board.getPiece(board.getSquares()[0][square.getY()]).setSquare(board.getSquares()[3][square.getY()]);
@@ -50,31 +90,29 @@ public class Controls {
                 board.getPiece(board.getSquares()[7][square.getY()]).setSquare(board.getSquares()[5][square.getY()]);
             }
         }
-        
-        logic.setEnPassant(null);
-        
-        if (piece.getType() == Type.PAWN){
-            if (square.getSide() == Side.NEUTRAL && square.getX() != piece.getSquare().getX()){
-                board.killPiece(board.getPiece(board.getSquares()[square.getX()][piece.getSquare().getY()]));
-            }
-            if (square.getY() - piece.getSquare().getY() == 2){
-                logic.setEnPassant(board.getSquares()[square.getX()][square.getY() - 1]);
-            }
-            if (square.getY() - piece.getSquare().getY() == - 2){
-                logic.setEnPassant(board.getSquares()[square.getX()][square.getY() + 1]);
-            }
-            if (square.getY() == 0 || square.getY() == 7){
-                willPromote = true;
-            }
+    }
+
+    private void blockCastlingIfNeeded(Piece piece) {
+        if (piece.getSquare().equals(board.getSquares()[0][0])){
+            logic.blockLongCastleWhite();
         }
-        
-        if (square.getSide() != Side.NEUTRAL){
-            board.killPiece(board.getPiece(square));
+        if (piece.getSquare().equals(board.getSquares()[7][0])){
+            logic.blockShortCastleWhite();
         }
-        
-        piece.setSquare(square);
-        
-        return willPromote;
+        if (piece.getSquare().equals(board.getSquares()[7][0])){
+            logic.blockLongCastleBlack();
+        }
+        if (piece.getSquare().equals(board.getSquares()[7][7])){
+            logic.blockShortCastleBlack();
+        }
+        if (piece.getSquare().equals(board.getSquares()[4][0])){
+            logic.blockLongCastleWhite();
+            logic.blockShortCastleWhite();
+        }
+        if (piece.getSquare().equals(board.getSquares()[4][7])){
+            logic.blockLongCastleBlack();
+            logic.blockShortCastleBlack();
+        }
     }
     
     public void promote(Piece piece , Type type){
