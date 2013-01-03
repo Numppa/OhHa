@@ -9,8 +9,12 @@ public class Locator {
     
     
     public Square getSquare(String location){
-        int y = Integer.parseInt(location.substring(1)) - 1;
-        
+        int y = -1;
+        try{
+            y = Integer.parseInt(location.substring(1)) - 1;
+        } catch (Exception e){
+            return null;
+        }
         int x = -1;
         
         if (location.charAt(0) == 'a') x = 0;

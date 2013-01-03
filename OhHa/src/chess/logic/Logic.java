@@ -35,6 +35,10 @@ public class Logic {
         enPassant = square;
     }
     
+    public Turn getTurn(){
+        return turn;
+    }
+    
     public void blockShortCastleWhite(){
         shortCastleWhite = false;
     }
