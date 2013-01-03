@@ -34,45 +34,7 @@ public class TextUi {
         
         System.out.println("options: (load) , (save) , (new) , (undo) , quit or (make your move)");
         while (true){
-            if (turn.getSide() == Side.WHITE){
-                System.out.println("White moves\n");
-            } else {
-                System.out.println("Black moves\n");
-            }
             
-            System.out.println("Write that square's name where the piece you want to move is standing");
-            
-            String command = scanner.nextLine();
-            
-            try{
-                if (Integer.parseInt(command.substring(1)) > 0 && Integer.parseInt(command.substring(1)) < 9){
-                    Locator locator = new Locator(board);
-                    if (locator.getSquare(command) != null){
-                        Square s = locator.getSquare(command);
-                        if (s.getSide() != turn.getSide()){
-                            System.out.println("You have no piece in that square!");
-                        } else {
-                            System.out.println("Square " + command + " selected");
-                        }
-                    }
-                }
-            } catch (Exception e){
-            }
-            
-            logic.setEnPassant(board.getSquares()[1][2]);
-            ArrayList<Square> s = logic.pieceCanMoveTo(board.getPiece(board.getSquares()[0][1]));
-            for (Square square : s) {
-                System.out.println(square.getX() + " " + square.getY());
-            }
-            
-            if (command.equals("quit")){
-                break;
-            }
-                
-
         }
     }
-    
-    
-    
 }

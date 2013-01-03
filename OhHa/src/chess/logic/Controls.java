@@ -46,6 +46,12 @@ public class Controls {
         return willPromote;
     }
     
+    public void newGame(){
+        moves = new Moves();
+        board = new Board();
+        logic = new Logic(board);
+    }
+    
     public void loadPosition(){
         board = new Board();
         logic = new Logic(board);

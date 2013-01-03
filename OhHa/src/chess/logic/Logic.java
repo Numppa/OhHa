@@ -66,6 +66,7 @@ public class Logic {
     }
     
     public boolean stalemate(){
+        boolean stalemate = true;
         if (getCheckingPieces().size() > 0){
             return false;
         }
@@ -74,7 +75,10 @@ public class Logic {
                 return false;
             }
         }
-        return true;
+        
+        stalemate = tooFewPieces();
+        
+        return stalemate;
     }
     
     
@@ -573,5 +577,21 @@ public class Logic {
         squares.removeAll(cantMoveTo);
         
         return squares;
+    }
+
+    private boolean tooFewPieces() {
+        if (board.getPieces().size() == 2){
+            return true;
+        }
+        
+        if (board.getPieces().size() == 3){
+            for (Piece piece : board.getPieces()) {
+                if (piece.getType() == Type.KNIGHT || piece.getType() == Type.BISHOP){
+                    return true;
+                }
+            }
+        }
+        
+        return false;
     }
 }
