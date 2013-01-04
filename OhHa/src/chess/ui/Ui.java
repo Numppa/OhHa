@@ -4,7 +4,6 @@ package chess.ui;
 import chess.board.Board;
 import chess.pieces.Side;
 import chess.ui.graphics.BoardGraphics;
-import chess.ui.graphics.PawnGraphics;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -38,7 +37,9 @@ public class Ui implements Runnable{
     }
 
     public void createComponents(Container container) {
-        container.add(new Drawer(board));
+        Drawer drawer = new Drawer(board);
+        container.add(drawer);
+        
         
     }
     

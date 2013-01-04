@@ -4,6 +4,7 @@ package chess.board;
 import chess.pieces.Piece;
 import chess.pieces.Side;
 import chess.pieces.Type;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class Board {
     private Square[][] squares;
     private List<Piece> pieces;
     
-    public Board(){
+    public Board() throws IOException{
         this.squares = new Square[8][8];
         this.pieces = new ArrayList<Piece>();
                    
@@ -45,7 +46,7 @@ public class Board {
         return p;
     }
 
-    private void setUpPieces() {
+    private void setUpPieces() throws IOException {
         for (int i = 0; i < 8; i++) {
             Piece p = new Piece(squares[i][1] , Side.WHITE , Type.PAWN);
             pieces.add(p);
@@ -85,7 +86,7 @@ public class Board {
         pieces.remove(piece);
     }
     
-    public void StartingPosition(){
+    public void StartingPosition() throws IOException{
         pieces.removeAll(pieces);
         for (Square[] squares1 : squares) {
             for (Square square : squares1) {

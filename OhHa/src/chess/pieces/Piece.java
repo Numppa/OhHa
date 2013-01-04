@@ -1,16 +1,21 @@
 package chess.pieces;
 
 import chess.board.Square;
+import chess.ui.graphics.PieceGraphics;
+import java.awt.Graphics;
+import java.io.IOException;
 
 public class Piece {
     private Square square;
     private Side side;
     private Type type;
+    private PieceGraphics pieceGraphics;
     
-    public Piece(Square square , Side side , Type type){
+    public Piece(Square square , Side side , Type type) throws IOException{
         this.square = square;
         this.side = side;
         this.type = type;
+        this.pieceGraphics = new PieceGraphics();
     }
     
     public Square getSquare(){
@@ -35,4 +40,7 @@ public class Piece {
         type = t;
     }
     
+    public void paintThis(Graphics graphics){
+        pieceGraphics.paintComponent(graphics, this);
+    }
 }
