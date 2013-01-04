@@ -10,13 +10,13 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class TestControls {
+public class ControlsTest {
     private Board board;
     private Logic logic;
     private Controls controls;
     
     
-    public TestControls() {
+    public ControlsTest() {
     }
 
     

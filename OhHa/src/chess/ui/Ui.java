@@ -1,7 +1,12 @@
 
 package chess.ui;
 
+import chess.board.Board;
+import chess.pieces.Side;
+import chess.ui.graphics.BoardGraphics;
+import chess.ui.graphics.PawnGraphics;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -13,15 +18,16 @@ import javax.swing.WindowConstants;
 
 public class Ui implements Runnable{
     private JFrame frame;
+    private Board board;
     
     public Ui(){
-        
+        this.board = new Board();
     }
     
     @Override
     public void run() {
         frame = new JFrame("Joel's Chess");
-        frame.setPreferredSize(new Dimension(1200 , 600));
+        frame.setPreferredSize(new Dimension(800 , 625));
         
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
@@ -32,8 +38,7 @@ public class Ui implements Runnable{
     }
 
     public void createComponents(Container container) {
-        
-        
+        container.add(new Drawer(board));
         
     }
     

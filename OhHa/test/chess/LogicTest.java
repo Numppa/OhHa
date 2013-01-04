@@ -10,11 +10,11 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class TestLogic {
+public class LogicTest {
     Board board;
     Logic logic;
     
-    public TestLogic() {
+    public LogicTest() {
     }
 
     

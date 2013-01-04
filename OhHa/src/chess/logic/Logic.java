@@ -184,6 +184,7 @@ public class Logic {
         
         return squares;
     }
+    
     private ArrayList<Square> bishopsInfluence(Piece piece){
         ArrayList<Square> squares = new ArrayList<Square>();
         

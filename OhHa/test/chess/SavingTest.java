@@ -10,12 +10,12 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class TestSaving {
+public class SavingTest {
     Board board;
     Logic logic;
     Controls controls;
     
-    public TestSaving() {
+    public SavingTest() {
     }
 
     
