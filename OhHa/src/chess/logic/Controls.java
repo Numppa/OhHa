@@ -25,7 +25,7 @@ public class Controls {
         moves.save();
     }
     
-    public void loadGame() throws FileNotFoundException{
+    public void loadGame() throws FileNotFoundException, IOException{
         moves.load();
         loadPosition();
     }
@@ -57,13 +57,13 @@ public class Controls {
         return willPromote;
     }
     
-    public void newGame(){
+    public void newGame() throws IOException{
         moves = new Moves();
         board.StartingPosition();
         logic.setUp();
     }
     
-    public void loadPosition(){
+    public void loadPosition() throws IOException{
         board.StartingPosition();
         logic.setUp();
         
@@ -74,7 +74,7 @@ public class Controls {
         }
     }
     
-    public void undo(){
+    public void undo() throws IOException{
         moves.removeLast();
         loadPosition();
     }

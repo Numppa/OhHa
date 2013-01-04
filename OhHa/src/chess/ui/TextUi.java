@@ -17,7 +17,7 @@ public class TextUi {
     private Logic logic;
     private Controls controls;
     
-    public TextUi(){
+    public TextUi() throws IOException{
         this.scanner = new Scanner(System.in);
         this.board = new Board();
         
