@@ -2,6 +2,7 @@ package chess;
 
 import chess.ui.TextUi;
 import chess.ui.Ui;
+import java.io.IOException;
 import javax.swing.SwingUtilities;
 
 public class Chess {
@@ -18,7 +19,7 @@ public class Chess {
         SwingUtilities.invokeLater(ui);
     }
     
-    public void runTextMode(){
+    public void runTextMode() throws IOException{
         textUi.run();
     }
 }
