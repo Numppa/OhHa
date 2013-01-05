@@ -3,6 +3,11 @@ package chess.ui;
 import java.awt.event.MouseEvent;
 
 public class MouseListener implements java.awt.event.MouseListener{
+    private Selections selections;
+    
+    public MouseListener(Selections selections){
+        this.selections = selections;
+    }
 
     @Override
     public void mouseClicked(MouseEvent arg0) {

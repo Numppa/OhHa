@@ -36,15 +36,13 @@ public class Ui implements Runnable{
         frame.pack();
         frame.setVisible(true);
         
-        board.getPiece(board.getSquares()[4][1]).setSquare(board.getSquares()[4][3]);
-                board.getPiece(board.getSquares()[3][1]).setSquare(board.getSquares()[3][3]);
-
-
     }
 
     public void createComponents(Container container) {
         Drawer drawer = new Drawer(board);
         container.add(drawer);
+        
+        
     }
     
     public JFrame getFrame(){
