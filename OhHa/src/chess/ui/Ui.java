@@ -2,6 +2,8 @@
 package chess.ui;
 
 import chess.board.Board;
+import chess.logic.Controls;
+import chess.logic.Logic;
 import chess.pieces.Side;
 import chess.ui.graphics.BoardGraphics;
 import java.awt.BorderLayout;
@@ -42,7 +44,12 @@ public class Ui implements Runnable{
         Drawer drawer = new Drawer(board);
         container.add(drawer);
         
+        Logic logic = new Logic(board);
+        Controls controls = new Controls(board, logic);
+        Selections selections = new Selections(logic, controls, board);
+        MouseListener mouseListener = new MouseListener(selections, board);
         
+        container.addMouseListener(mouseListener);
     }
     
     public JFrame getFrame(){

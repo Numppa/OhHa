@@ -39,6 +39,7 @@ public class Selections {
         if (logic.pieceCanMoveTo(piece).contains(sq)){
             boolean promotion = controls.makeAMove(piece, sq, false);
             squareSelected = false;
+            System.out.println("jee2");
             if (promotion){
                 promotePawn(piece);
             }
@@ -50,7 +51,11 @@ public class Selections {
     }
 
     private void trySelecting(Square sq) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if (sq.getSide() == logic.getTurn().getSide() && logic.pieceCanMoveTo(board.getPiece(sq)).size() > 0){
+            square = sq;
+            squareSelected = true;
+            System.out.println("jee");
+        }
     }
     
     

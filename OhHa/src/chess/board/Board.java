@@ -4,6 +4,8 @@ package chess.board;
 import chess.pieces.Piece;
 import chess.pieces.Side;
 import chess.pieces.Type;
+import chess.ui.graphics.BoardGraphics;
+import java.awt.Graphics;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +13,12 @@ import java.util.List;
 public class Board {
     private Square[][] squares;
     private List<Piece> pieces;
+    private BoardGraphics boardGraphics;
     
     public Board() throws IOException{
         this.squares = new Square[8][8];
         this.pieces = new ArrayList<Piece>();
+        this.boardGraphics = new BoardGraphics();
                    
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -94,5 +98,9 @@ public class Board {
             }
         }
         setUpPieces();
+    }
+    
+    public void paintThis(Graphics graphics , List<Square> canMoveTo){
+        boardGraphics.paintComponent(graphics, canMoveTo);
     }
 }
