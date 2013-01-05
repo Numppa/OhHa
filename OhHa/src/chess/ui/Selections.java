@@ -6,6 +6,7 @@ import chess.logic.Controls;
 import chess.logic.Logic;
 import chess.pieces.Piece;
 import chess.pieces.Side;
+import java.util.ArrayList;
 
 public class Selections {
     private boolean squareSelected;
@@ -13,12 +14,14 @@ public class Selections {
     private Logic logic;
     private Controls controls;
     private Board board;
+    private Drawer drawer;
     
-    public Selections(Logic logic , Controls controls , Board board){
+    public Selections(Logic logic , Controls controls , Board board , Drawer drawer){
         this.logic = logic;
         this.controls = controls;
         this.board = board;
         this.squareSelected = false;
+        this.drawer = drawer;
         this.square = new Square(-1, -1, Side.NEUTRAL);
     }
     
@@ -26,6 +29,8 @@ public class Selections {
         if (squareSelected){
             if (sq.equals(square)){
                 squareSelected = false;
+                drawer.setSquares(new ArrayList<Square>());
+                drawer.repaint();
                 return;
             }
             tryMoving(sq);
@@ -40,6 +45,8 @@ public class Selections {
             boolean promotion = controls.makeAMove(piece, sq, false);
             squareSelected = false;
             System.out.println("jee2");
+            drawer.setSquares(new ArrayList<Square>());
+            drawer.repaint();
             if (promotion){
                 promotePawn(piece);
             }
@@ -55,6 +62,10 @@ public class Selections {
             square = sq;
             squareSelected = true;
             System.out.println("jee");
+            ArrayList<Square> squares = logic.pieceCanMoveTo(board.getPiece(sq));
+            squares.add(sq);
+            drawer.setSquares(squares);
+            drawer.repaint();
         }
     }
     

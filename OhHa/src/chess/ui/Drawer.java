@@ -10,9 +10,11 @@ import javax.swing.JPanel;
 
 public class Drawer extends JPanel{
     Board board;
+    ArrayList<Square> squares;
     
     public Drawer(Board board){
         this.board = board;
+        this.squares = new ArrayList<Square>();
         
     }
     
@@ -20,13 +22,18 @@ public class Drawer extends JPanel{
     @Override
     protected void paintComponent(Graphics graphics){
         
-        new BoardGraphics().paintComponent(graphics , new ArrayList<Square>());
+        new BoardGraphics().paintComponent(graphics , squares);
         
         for (Piece piece : board.getPieces()) {
             piece.paintThis(graphics);
         }
 
     }
+    
+    public void setSquares(ArrayList<Square> list){
+        squares = list;
+    }
+    
 }
     
 

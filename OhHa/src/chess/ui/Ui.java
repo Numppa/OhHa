@@ -46,7 +46,7 @@ public class Ui implements Runnable{
         
         Logic logic = new Logic(board);
         Controls controls = new Controls(board, logic);
-        Selections selections = new Selections(logic, controls, board);
+        Selections selections = new Selections(logic, controls, board , drawer);
         MouseListener mouseListener = new MouseListener(selections, board);
         
         container.addMouseListener(mouseListener);
