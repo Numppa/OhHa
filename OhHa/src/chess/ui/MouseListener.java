@@ -14,11 +14,8 @@ public class MouseListener implements java.awt.event.MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent arg0) {
-        System.out.println("kokeilu");
         if (arg0.getX() <= 600 && arg0.getY() <= 600){
             selections.squareClicked(board.getSquares()[arg0.getX() / 75][(600 - arg0.getY()) / 75]);
-            System.out.println("kokeilu2");
-            System.out.println(board.getSquares()[arg0.getX() / 75][(600 - arg0.getY()) / 75].toString());
         }
     }
 

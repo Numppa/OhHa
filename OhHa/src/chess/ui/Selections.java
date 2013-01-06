@@ -44,7 +44,6 @@ public class Selections {
         if (logic.pieceCanMoveTo(piece).contains(sq)){
             boolean promotion = controls.makeAMove(piece, sq, false);
             squareSelected = false;
-            System.out.println("jee2");
             drawer.setSquares(new ArrayList<Square>());
             drawer.repaint();
             if (promotion){
@@ -61,7 +60,6 @@ public class Selections {
         if (sq.getSide() == logic.getTurn().getSide() && logic.pieceCanMoveTo(board.getPiece(sq)).size() > 0){
             square = sq;
             squareSelected = true;
-            System.out.println("jee");
             ArrayList<Square> squares = logic.pieceCanMoveTo(board.getPiece(sq));
             squares.add(sq);
             drawer.setSquares(squares);
