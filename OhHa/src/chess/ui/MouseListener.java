@@ -17,6 +17,9 @@ public class MouseListener implements java.awt.event.MouseListener{
         if (arg0.getX() <= 600 && arg0.getY() <= 600){
             selections.squareClicked(board.getSquares()[arg0.getX() / 75][(600 - arg0.getY()) / 75]);
         }
+        if (true){
+            
+        }
     }
 
     @Override
