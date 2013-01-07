@@ -10,6 +10,11 @@ import chess.pieces.Type;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Testaamiseen tarkoitettu tekstikäyttöliittymä. 
+ * 
+ * @author joel
+ */
 
 public class TextUi {
     private Scanner scanner;

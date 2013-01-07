@@ -6,8 +6,13 @@ import chess.logic.Controls;
 import chess.logic.Logic;
 import chess.pieces.Piece;
 import chess.pieces.Side;
-import chess.pieces.Type;
 import java.util.ArrayList;
+
+/**
+ * Käsittelee tapahtumankuuntelijoilta saadun infon
+ * 
+ * @author joel
+ */
 
 public class Selections {
     private boolean squareSelected;
@@ -73,6 +78,10 @@ public class Selections {
             drawer.setSquares(squares);
             drawer.repaint();
         }
+    }
+    
+    public void unSelect(){
+        squareSelected = false;
     }
     
     

@@ -3,6 +3,12 @@ package chess.ui;
 import chess.board.Board;
 import java.awt.event.MouseEvent;
 
+/**
+ * Kuuntelee lautaan kohdistuvia klikkauksia. 
+ * 
+ * @author joel
+ */
+
 public class MouseListener implements java.awt.event.MouseListener{
     private Selections selections;
     private Board board;

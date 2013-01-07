@@ -8,6 +8,12 @@ import chess.pieces.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Sovelluslogiikka
+ * 
+ * @author joel
+ */
+
 public class Logic {
     private Board board;
     private Turn turn;

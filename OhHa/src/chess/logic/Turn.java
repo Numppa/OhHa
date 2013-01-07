@@ -2,6 +2,12 @@ package chess.logic;
 
 import chess.pieces.Side;
 
+/**
+ * Luokka, jonka tarkoitus on tietää vuoro. 
+ * 
+ * @author joel
+ */
+
 public class Turn {
     private Side side;
     

@@ -10,6 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Mahdollistaa pelin tallentamisen ja lataamisen.
+ * 
+ * @author joel
+ */
+
 public class Moves {
     ArrayList<String> log;
     File file;

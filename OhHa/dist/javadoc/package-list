@@ -1,0 +1,7 @@
+chess
+chess.board
+chess.logic
+chess.pieces
+chess.saving
+chess.ui
+chess.ui.graphics

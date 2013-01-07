@@ -9,6 +9,12 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
+/**
+ * piirtää laudan ja nappulat
+ * 
+ * @author joel
+ */
+
 public class Drawer extends JPanel{
     Board board;
     ArrayList<Square> squares;

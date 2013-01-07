@@ -9,6 +9,12 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+/**
+ * Nappulan piirtävä luokka. 
+ * 
+ * @author joel
+ */
+
 public class PieceGraphics {
     private BufferedImage blackPawn;
     private BufferedImage whitePawn;

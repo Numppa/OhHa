@@ -8,6 +8,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Shakkilauta
+ * 
+ * @author joel
+ */
+
 public class Board {
     private Square[][] squares;
     private List<Piece> pieces;
@@ -22,18 +28,30 @@ public class Board {
             }
         }
         
-        setUpPieces();
-        
+        setUpPieces();    
     }
     
+    /**
+     * Palauttaa ruudut taulukkona
+     * @return Square[][]
+     */
     public Square[][] getSquares(){
         return squares;
     }
-
+    
+    /**
+     * Palauttaa nappulat listana
+     * @return List<Piece>
+     */
     public List<Piece> getPieces() {
         return pieces;
     }
     
+    /**
+     * Hakee parametrina annetussa ruudussa olevan nappulan.
+     * @param Square
+     * @return Piece
+     */
     public Piece getPiece(Square s){
         Piece p = null;
         
@@ -81,11 +99,20 @@ public class Board {
         }
     }
     
+    /**
+     * Poistaa nappulan pelistä
+     * @param piece 
+     */
     public void killPiece(Piece piece){
         piece.getSquare().setSide(Side.NEUTRAL);
         pieces.remove(piece);
     }
     
+    
+    /**
+     * Palauttaa alkuaseman laudalle.
+     * @throws IOException 
+     */
     public void StartingPosition() throws IOException{
         pieces.removeAll(pieces);
         for (Square[] squares1 : squares) {

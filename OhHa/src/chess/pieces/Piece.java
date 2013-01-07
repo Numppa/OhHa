@@ -5,6 +5,12 @@ import chess.ui.graphics.PieceGraphics;
 import java.awt.Graphics;
 import java.io.IOException;
 
+/**
+ * Shakkinappula
+ * 
+ * @author joel
+ */
+
 public class Piece {
     private Square square;
     private Side side;
@@ -39,6 +45,12 @@ public class Piece {
     public void setType(Type t){
         type = t;
     }
+    
+    /**
+     * Nappula piirtää itsensä laudalle. 
+     * 
+     * @param graphics 
+     */
     
     public void paintThis(Graphics graphics){
         pieceGraphics.paintComponent(graphics, this);

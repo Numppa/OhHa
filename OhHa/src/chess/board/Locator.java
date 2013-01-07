@@ -1,5 +1,11 @@
 package chess.board;
 
+/**
+ * Tekstikäyttöliittymää varten tehty luokka, jonka tarkoitus on löytää standardimuotoista ruudun nimeä vastaava olio. 
+ * 
+ * @author joel
+ */
+
 public class Locator {
     private Board board;
     

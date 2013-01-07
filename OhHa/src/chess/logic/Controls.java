@@ -9,6 +9,12 @@ import chess.saving.Moves;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/**
+ * Huolehtii siirron suorittamiseen liittyvistä toimenpiteistä. 
+ * 
+ * @author joel
+ */
+
 public class Controls {
     private Board board;
     private Logic logic;
@@ -44,8 +50,6 @@ public class Controls {
         if (square.getSide() != Side.NEUTRAL){
             board.killPiece(board.getPiece(square));
         }
-        
-
         
         if (!loading){
             moves.addMove(piece, square);

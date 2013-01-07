@@ -2,6 +2,12 @@ package chess.board;
 
 import chess.pieces.Side;
 
+/**
+ * Shakkilaudan ruutu. 
+ * 
+ * @author joel
+ */
+
 public class Square {
     private Side side;
     private int x;

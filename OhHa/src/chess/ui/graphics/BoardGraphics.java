@@ -5,6 +5,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.List;
 
+/**
+ * Laudan ja ruutujen korostukset piirtävä luokka. 
+ * 
+ * @author joel
+ */
+
 public class BoardGraphics {
     
     
