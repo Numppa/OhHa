@@ -4,6 +4,7 @@ import chess.board.Board;
 import chess.board.Square;
 import chess.pieces.Piece;
 import chess.ui.graphics.BoardGraphics;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -15,7 +16,8 @@ public class Drawer extends JPanel{
     public Drawer(Board board){
         this.board = board;
         this.squares = new ArrayList<Square>();
-        
+        this.setMinimumSize(new Dimension(600, 600));
+        this.setMaximumSize(new Dimension(600, 600));
     }
     
     

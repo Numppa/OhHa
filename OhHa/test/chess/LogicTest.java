@@ -5,6 +5,7 @@ import chess.board.Board;
 import chess.logic.Logic;
 import chess.pieces.Side;
 import chess.pieces.Type;
+import java.io.IOException;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +20,7 @@ public class LogicTest {
 
     
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         board = new Board();
         logic = new Logic(board);
     }

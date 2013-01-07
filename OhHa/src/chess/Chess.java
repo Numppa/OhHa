@@ -10,9 +10,9 @@ public class Chess {
     private TextUi textUi;
     
     
-    public Chess(){
+    public Chess() throws IOException{
         this.ui = new Ui();
-        this.textUi = new TextUi();
+       // this.textUi = new TextUi();
     }
     
     public void run(){

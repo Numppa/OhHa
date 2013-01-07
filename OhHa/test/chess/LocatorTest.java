@@ -5,6 +5,7 @@ package chess;
 import chess.board.Square;
 import chess.board.Board;
 import chess.board.Locator;
+import java.io.IOException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +19,7 @@ public class LocatorTest {
 
     
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         board = new Board();
         locator = new Locator(board);
     }

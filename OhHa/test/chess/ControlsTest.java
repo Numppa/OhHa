@@ -5,6 +5,7 @@ import chess.logic.Logic;
 import chess.logic.Controls;
 import chess.board.Board;
 import chess.pieces.Type;
+import java.io.IOException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +23,7 @@ public class ControlsTest {
     
     
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         board = new Board();
         logic = new Logic(board);
         controls = new Controls(board, logic);

@@ -5,6 +5,7 @@ import chess.pieces.Type;
 import chess.pieces.Piece;
 import chess.board.Board;
 import chess.pieces.Side;
+import java.io.IOException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +15,7 @@ public class BoardTest {
     private Board board;
     
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         board = new Board();
     }
     

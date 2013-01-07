@@ -20,7 +20,7 @@ public class SavingTest {
 
     
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         board = new Board();
         logic = new Logic(board);
         controls = new Controls(board, logic);
@@ -28,7 +28,7 @@ public class SavingTest {
     
     
     @Test
-    public void oneMove(){
+    public void oneMove() throws IOException{
         controls.makeAMove(board.getPiece(board.getSquares()[4][1]), board.getSquares()[4][3], false);
         controls.loadPosition();
         
@@ -37,7 +37,7 @@ public class SavingTest {
     
     
     @Test
-    public void undo(){
+    public void undo() throws IOException{
         controls.makeAMove(board.getPiece(board.getSquares()[4][1]), board.getSquares()[4][3], false);
         controls.undo();
         
