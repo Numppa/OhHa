@@ -6,6 +6,7 @@ import chess.logic.Controls;
 import chess.logic.Logic;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -60,6 +61,7 @@ public class Ui implements Runnable{
         panel.add(loadButton);
         panel.add(undoButton);
         
+        
         Board board = new Board();
         Drawer drawer = new Drawer(board);
         drawer.setMaximumSize(new Dimension(600, 600));
@@ -71,6 +73,14 @@ public class Ui implements Runnable{
         Controls controls = new Controls(board, logic);
         Selections selections = new Selections(logic, controls, board , drawer);
         MouseListener mouseListener = new MouseListener(selections, board);
+        
+        ButtonListener buttonListener = new ButtonListener(selections , controls , drawer , newButton , saveButton , loadButton , undoButton);
+        
+        newButton.addActionListener(buttonListener);
+        saveButton.addActionListener(buttonListener);
+        loadButton.addActionListener(buttonListener);
+        undoButton.addActionListener(buttonListener);
+        
         
         container.addMouseListener(mouseListener);
     }
