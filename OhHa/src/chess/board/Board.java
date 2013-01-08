@@ -64,6 +64,10 @@ public class Board {
         return p;
     }
 
+    /**
+     * Lisää uudet nappulat alkuasemaan. 
+     * @throws IOException 
+     */
     private void setUpPieces() throws IOException {
         for (int i = 0; i < 8; i++) {
             Piece p = new Piece(squares[i][1] , Side.WHITE , Type.PAWN);

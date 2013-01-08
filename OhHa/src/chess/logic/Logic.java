@@ -32,11 +32,16 @@ public class Logic {
         this.shortCastleBlack = true;
         this.enPassant = null;
     }
-    
+    /**
+     * Antaa vuoron toiselle pelaajalle. 
+     */
     public void nextTurn(){
         turn.next();
     }
     
+    /**
+     * Asettaa logiikan alkutilanteeseen. 
+     */
     public void setUp(){
         enPassant = null;
         longCastleBlack = true;
@@ -48,30 +53,51 @@ public class Logic {
         }
     }
     
+    /**
+     * Asettaa ruudun, josta voidaan lyödä ohesta. 
+     * @param Square square 
+     */
     public void setEnPassant(Square square){
         enPassant = square;
     }
     
+    /**
+     * Palauttaa Vuoro-olion. 
+     * @return 
+     */
     public Turn getTurn(){
         return turn;
     }
     
+    /**
+     * Estää valkoista pelaamasta lyhyttä linnaa pelin aikana. 
+     */
     public void blockShortCastleWhite(){
         shortCastleWhite = false;
     }
-    
+    /**
+     * Estää valkoista pelaamasta pitkää linnaa pelin aikana. 
+     */
     public void blockLongCastleWhite(){
         longCastleWhite = false;
     }
-    
+    /**
+     * Estää mustaa pelaamasta lyhyttä linnaa pelin aikana. 
+     */
     public void blockShortCastleBlack(){
         shortCastleBlack = false;
     }
-    
+    /**
+     * Estää mustaa pelaamasta lyhyttä linnaa pelin aikana. 
+     */
     public void blockLongCastleBlack(){
         longCastleBlack = false;
     }
     
+    /**
+     * Palauttaa true, jos vuorossa oleva pelaaja on matissa. Muulloin palauttaa false.
+     * @return boolean checkmate
+     */
     public boolean checkmate(){
         
         if (getCheckingPieces().isEmpty()){
@@ -86,7 +112,15 @@ public class Logic {
         return true;
     }
     
+    /**
+     * Palauttaa true, jos vuorossa oleva pelaaja on patissa 
+     * tai jos nappuloita on liian vähän matin tekemiseen.
+     * @return 
+     */
     public boolean stalemate(){
+        if (tooFewPieces()){
+            return true;
+        }
         if (getCheckingPieces().size() > 0){
             return false;
         }
@@ -95,17 +129,13 @@ public class Logic {
                 return false;
             }
         }
-        
-        if (tooFewPieces()){
-            return true;
-        }
-        
         return true;
-    }
-    
-    
-    
-
+    } 
+/**
+     * Palauttaa lista ruuduista, mihin parametrina annettu nappula saa siirtyä. 
+     * @param Piece piece
+     * @return ArrayList<Square> squares
+     */
     public ArrayList<Square> pieceCanMoveTo(Piece piece){
         ArrayList<Square> canMoveTo = new ArrayList<Square>();
         
@@ -124,10 +154,11 @@ public class Logic {
         return canMoveTo;
     }
 
-    
-
-    
-    
+    /**
+     * Palauttaa listan ruuduista, mitä parametrina annettu nappula uhkaa. 
+     * @param Piece piece
+     * @return ArrayList<Square> squares
+     */
     private ArrayList<Square> piecesInfluence(Piece piece){
         ArrayList<Square> squares = new ArrayList<Square>();
         
@@ -153,6 +184,11 @@ public class Logic {
         return squares;
     }
     
+    /**
+     * Palauttaa Listan ruuduista, mitä ratsu uhkaa. 
+     * @param Piece knight
+     * @return ArrayList<Square> squares
+     */
     private ArrayList<Square> knightsInfluence(Piece piece){
         ArrayList<Square> squares = new ArrayList<Square>();
         try {
@@ -191,6 +227,11 @@ public class Logic {
         return squares;
     }
     
+    /**
+     * Palauttaa lista ruuduista, mitä lähetti uhkaa. 
+     * @param Piece bishop
+     * @return ArrayList<Square> squares
+     */
     private ArrayList<Square> bishopsInfluence(Piece piece){
         ArrayList<Square> squares = new ArrayList<Square>();
         
@@ -257,6 +298,11 @@ public class Logic {
         return squares;
     }
     
+    /**
+     * Palauttaa listan ruuduista, mitä torni uhkaa.
+     * @param piece rook
+     * @return ArrayList<Square> squares
+     */
     private ArrayList<Square> rooksInfluence(Piece piece){
         ArrayList<Square> squares = new ArrayList<Square>();
         int x = piece.getSquare().getX();
@@ -316,12 +362,23 @@ public class Logic {
         
         return squares;
     }
+    
+    /**
+     * Palauttaa lista ruuduista, mitä kuningatar uhkaa. 
+     * @param Piece queen
+     * @return ArrayList<Square> squares
+     */
     private ArrayList<Square> queensInfluence(Piece piece){
         ArrayList<Square> squares = bishopsInfluence(piece);
         squares.addAll(rooksInfluence(piece));
         return squares;
     }
     
+    /**
+     * Palauttaa listan ruuduista, mitä kuningas uhkaa.
+     * @param Piece King
+     * @return ArrayList<Square> squares
+     */
     private ArrayList<Square> kingsInfluence(Piece piece){
         ArrayList<Square> squares = new ArrayList<Square>();
         
@@ -360,6 +417,12 @@ public class Logic {
         
         return squares;
     }
+    
+    /**
+     * Palauttaa lista ruuduista, mitä sotilas uhkaa. 
+     * @param Piece Pawn
+     * @return ArrayList<Square> squares
+     */
     private ArrayList<Square> pawnsInfluence(Piece piece){
         ArrayList<Square> squares = new ArrayList<Square>();
         
@@ -385,6 +448,10 @@ public class Logic {
         return squares;
     }
     
+    /**
+     * Palauttaa listan shakkaavista nappuloista. 
+     * @return ArrayList<Piece> pieces
+     */
     private List<Piece> getCheckingPieces(){
         List<Piece> pieces = new ArrayList<Piece>();
         Piece king = null;
@@ -410,6 +477,11 @@ public class Logic {
         return pieces;
     }
 
+    /**
+     * Palauttaa listan ruuduista, mihin kunginas saa siirtyä. 
+     * @param Piece king
+     * @return ArrayList<Square> squares
+     */
     private ArrayList<Square> kingCanMoveTo(Piece piece) {
         ArrayList<Square> squares = kingsInfluence(piece);
         Square start = piece.getSquare();
@@ -494,6 +566,11 @@ public class Logic {
         return squares;
     }
 
+    /**
+     * Palauttaa listan ruuduista, mihin sotilas saa siirtyä. 
+     * @param Piece pawn
+     * @return ArrayList<Square> squares
+     */
     private ArrayList<Square> pawnCanMoveTo(Piece piece) {
         ArrayList<Square> squares = pawnsInfluence(piece);
         ArrayList<Square> cantMoveTo = new ArrayList<Square>();
@@ -560,7 +637,12 @@ public class Logic {
         
         return squares;
     }
-
+    
+    /**
+     * Palauttaa listan ruuduista, mihin nappula (muu kuin kuningas tai sotilas) saa siirtyä. 
+     * @param Piece piece
+     * @return ArrayList<Square> squares
+     */
     private ArrayList<Square> XCanMoveTo(Piece piece) {
         ArrayList<Square> squares = piecesInfluence(piece);
         ArrayList<Square> cantMoveTo = new ArrayList<Square>();
@@ -602,6 +684,10 @@ public class Logic {
         return squares;
     }
 
+    /**
+     * Tarkistaa onko laudalla riittävästi nappuloita matin tekemiseen. Palauttaa true, jos on. 
+     * @return boolean tooFewPieces 
+     */
     private boolean tooFewPieces() {
         if (board.getPieces().size() == 2){
             return true;
@@ -614,7 +700,6 @@ public class Logic {
                 }
             }
         }
-        
         return false;
     }
 }

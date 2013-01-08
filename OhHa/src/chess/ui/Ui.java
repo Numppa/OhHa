@@ -6,7 +6,6 @@ import chess.logic.Controls;
 import chess.logic.Logic;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -26,6 +25,10 @@ public class Ui implements Runnable{
     public Ui() {
     }
     
+    
+    /**
+     * Luo ikkunan, sen sisällön ja asettaa sen näkyviin. 
+     */
     @Override
     public void run() {
         frame = new JFrame("Joel's Chess");
@@ -42,6 +45,11 @@ public class Ui implements Runnable{
         
     }
 
+    /**
+     * Luo käyttöliittymäcomponentit. 
+     * @param container
+     * @throws IOException 
+     */
     public void createComponents(Container container) throws IOException {
         
         container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));

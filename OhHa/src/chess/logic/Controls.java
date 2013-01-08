@@ -26,16 +26,32 @@ public class Controls {
         this.logic = logic;
         this.moves = new Moves();
     }
-    
+   
+    /**
+     * Tallentaa pelin tiedostoon. 
+     * @throws IOException 
+     */
     public void save() throws IOException{
         moves.save();
     }
     
+    /**
+     * Lataa pelin tiedostosta ja asettaa aseman laudalle. 
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public void loadGame() throws FileNotFoundException, IOException{
         moves.load();
         loadPosition();
     }
     
+    /**
+     * Suorittaa nappulan siirtämisen. Palauttaa true, jos siirretty nappula on korottuva sotilas. Muuten palauttaa false. Loading-parametri on true, kun tallennettua peliä ladataan. Muulloin se on false. 
+     * @param Piece piece
+     * @param Square square
+     * @param Boolean loading
+     * @return boolean willPromote
+     */
     public boolean makeAMove(Piece piece , Square square , boolean loading){
         boolean willPromote = false;
         blockCastlingIfNeeded(piece);
@@ -44,7 +60,7 @@ public class Controls {
         logic.setEnPassant(null);
         
         if (piece.getType() == Type.PAWN){
-            willPromote = monitorEnPassantLongMoveAndPromotion(square, piece, willPromote);
+            willPromote = monitorEnPassantLongMoveAndPromotion(square, piece);
         }
         
         if (square.getSide() != Side.NEUTRAL){
@@ -61,12 +77,20 @@ public class Controls {
         return willPromote;
     }
     
+    /**
+     * Aloittaa uuden pelin alkuasemasta. 
+     * @throws IOException 
+     */
     public void newGame() throws IOException{
         moves = new Moves();
         board.StartingPosition();
         logic.setUp();
     }
     
+    /**
+     * Asettaa laudan aseman siirtolokin mukaiseksi. 
+     * @throws IOException 
+     */
     public void loadPosition() throws IOException{
         board.StartingPosition();
         logic.setUp();
@@ -90,6 +114,10 @@ public class Controls {
         }
     }
     
+    /**
+     * Peruu siirron. Siirtoja voi perua alkuasemaan asti. 
+     * @throws IOException 
+     */
     public void undo() throws IOException{
         moves.removeLast();
         loadPosition();
@@ -97,8 +125,18 @@ public class Controls {
     
     
     
-
-    private boolean monitorEnPassantLongMoveAndPromotion(Square square, Piece piece, boolean willPromote) {
+    
+    
+    /**
+     * Hoitaa Sotilaan siirtämiseen liittyvät poikkeustilanteet: 
+     * pitkän siirron jälkeinen ohestalyöntimahdollisuus, 
+     * ohestalyönti ja korottaminen. 
+     * Palauttaa true, jos sotilas korottuu. Muulloin palauttaa false. 
+     * @param Square square
+     * @param Piece piece
+     * @return boolean willPromote
+     */
+    private boolean monitorEnPassantLongMoveAndPromotion(Square square, Piece piece) {
         if (square.getSide() == Side.NEUTRAL && square.getX() != piece.getSquare().getX()){
             board.killPiece(board.getPiece(board.getSquares()[square.getX()][piece.getSquare().getY()]));
         }
@@ -109,11 +147,16 @@ public class Controls {
             logic.setEnPassant(board.getSquares()[square.getX()][square.getY() + 1]);
         }
         if (square.getY() == 0 || square.getY() == 7){
-            willPromote = true;
+            return true;
         }
-        return willPromote;
+        return false;
     }
 
+    /**
+     * Mikäli kuningas menee linnaan, niin metodi asettaa tornin viereen. 
+     * @param Piece piece
+     * @param Square square 
+     */
     private void ifMoveDoesCastle(Piece piece, Square square) {
         if (piece.getType() == Type.KING){
             if (piece.getSquare().getX() - square.getX() == 2){
@@ -125,6 +168,11 @@ public class Controls {
         }
     }
 
+    /**
+     * Poistaa tornittamismahdollisuuden lopullisesti silloin, 
+     * kun torni tai kuningas liikkuua alkuruudustaan. 
+     * @param Piece piece
+     */
     private void blockCastlingIfNeeded(Piece piece) {
         if (piece.getSquare().equals(board.getSquares()[0][0])){
             logic.blockLongCastleWhite();
@@ -148,6 +196,11 @@ public class Controls {
         }
     }
     
+    /**
+     * Korottaa sotilaan. 
+     * @param Piece piece
+     * @param Type type 
+     */
     public void promote(Piece piece , Type type){
         piece.setType(type);
         String lastMove = moves.getLog().get(moves.getLog().size() - 1);

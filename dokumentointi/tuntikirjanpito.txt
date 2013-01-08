@@ -38,3 +38,6 @@
 
 7.1.2013
 4h käyttöliittymän suunnittelua ja dokumentointia
+
+8.1.2013
+4h bugikorjailua dokumentointia ja viimeistelyä. 

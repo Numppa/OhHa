@@ -13,7 +13,12 @@ public class Locator {
         this.board = board;
     }
     
-    
+    /**
+     * Palauttaa merkkijonoesitystä vastaavan ruudun. Palauttaa null jos merkkijono virheelinen. 
+     * Esim. "a1" tai "e4"
+     * @param String location
+     * @return Square
+     */
     public Square getSquare(String location){
         int y = -1;
         try{
@@ -37,9 +42,5 @@ public class Locator {
         } catch (Exception e){
             return null;
         }
-        
-        
-        
     }
-    
 }

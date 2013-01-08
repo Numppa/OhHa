@@ -25,6 +25,7 @@ public class Selections {
     private Board board;
     private Drawer drawer;
     
+    
     public Selections(Logic logic , Controls controls , Board board , Drawer drawer){
         this.logic = logic;
         this.controls = controls;
@@ -34,6 +35,10 @@ public class Selections {
         this.square = new Square(-1, -1, Side.NEUTRAL);
     }
     
+    /**
+     * Toteuttaa mahdolliset tapahtumat, mitä seuraa ruudun klikkaamisesta. 
+     * @param Square sq 
+     */
     public void squareClicked(Square sq){
         if (squareSelected){
             if (sq.equals(square)){
@@ -47,7 +52,11 @@ public class Selections {
             trySelecting(sq);
         }
     }
-
+    
+    /**
+     * Siirtää valitun nappulan annettuun ruutuun,  jos tämä on mahdollista.
+     * @param Square sq 
+     */
     private void tryMoving(Square sq) {
         Piece piece = board.getPiece(square);
         if (logic.pieceCanMoveTo(piece).contains(sq)){
@@ -59,10 +68,22 @@ public class Selections {
             }
             drawer.setSquares(new ArrayList<Square>());
             drawer.repaint();
+            if (logic.checkmate()){
+                logic.nextTurn();
+                JOptionPane.showMessageDialog(new Frame(), "Game over " + logic.getTurn().getSide() + " wins", "Checkmate" , JOptionPane.YES_OPTION);
+                logic.nextTurn();
+            }
+            if (logic.stalemate()){
+                JOptionPane.showMessageDialog(new Frame(), "Tie", "Stalemate", JOptionPane.YES_OPTION);
+            }
         }
     }
 
 
+    /**
+     * Valitsee ruudun, jos siinä on oma nappula ja se pystyy liikkumaan. 
+     * @param Square sq 
+     */
     private void trySelecting(Square sq) {
         if (sq.getSide() == logic.getTurn().getSide() && logic.pieceCanMoveTo(board.getPiece(sq)).size() > 0){
             square = sq;
@@ -74,10 +95,17 @@ public class Selections {
         }
     }
     
+    /**
+     * Poistaa ruudun valinnan. Käytetään silloin, kun oikean paneelin painikkeita klikataan. 
+     */
     public void unSelect(){
         squareSelected = false;
     }
 
+    /**
+     * Korotetaan sotilas, kun se saapuu viimeiselle riville. 
+     * @param Piece piece 
+     */
     private void promotePawn(Piece piece) {
         int n = -1;
         Object[] options = {"Queen" , "Rook" , "Knight" , "Bishop"};
