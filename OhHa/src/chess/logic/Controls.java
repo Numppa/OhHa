@@ -75,6 +75,18 @@ public class Controls {
             Piece piece = board.getPiece(board.getSquares()[Integer.parseInt(string.substring(0, 1))][Integer.parseInt(string.substring(1, 2))]);
             Square square = board.getSquares()[Integer.parseInt(string.substring(2, 3))][Integer.parseInt(string.substring(3, 4))];
             makeAMove(piece, square, true);
+            if (string.charAt(string.length() - 1) == 'q'){
+                piece.setType(Type.QUEEN);
+            }
+            if (string.charAt(string.length() - 1) == 'r'){
+                piece.setType(Type.ROOK);
+            }
+            if (string.charAt(string.length() - 1) == 'k'){
+                piece.setType(Type.KNIGHT);
+            }
+            if (string.charAt(string.length() - 1) == 'b'){
+                piece.setType(Type.BISHOP);
+            }
         }
     }
     
@@ -138,6 +150,21 @@ public class Controls {
     
     public void promote(Piece piece , Type type){
         piece.setType(type);
+        String lastMove = moves.getLog().get(moves.getLog().size() - 1);
+        moves.removeLast();
+        if (type == Type.QUEEN){
+            lastMove += "q";
+        }
+        if (type == Type.ROOK){
+            lastMove += "r";
+        }
+        if (type == Type.KNIGHT){
+            lastMove += "k";
+        }
+        if (type == Type.BISHOP){
+            lastMove += "b";
+        }
+        moves.addString(lastMove);
     }
     
     

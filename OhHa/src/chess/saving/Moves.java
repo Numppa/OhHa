@@ -29,6 +29,10 @@ public class Moves {
         log.add(piece.getSquare().toString() + "" + square.toString());
     }
     
+    public void addString(String string){
+        log.add(string);
+    }
+    
     public void removeLast(){
         if (log.size() > 0){
             log.remove(log.size() - 1);

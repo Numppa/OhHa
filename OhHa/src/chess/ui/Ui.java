@@ -49,7 +49,7 @@ public class Ui implements Runnable{
         JPanel panel = new JPanel();
         
         BoxLayout box = new BoxLayout(panel, BoxLayout.Y_AXIS);
-        panel.setMaximumSize(new Dimension(200, 200));
+        panel.setMaximumSize(new Dimension(200, 250));
         
         JButton newButton = new JButton("New game");
         JButton saveButton = new JButton("Save game");

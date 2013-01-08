@@ -6,7 +6,10 @@ import chess.logic.Controls;
 import chess.logic.Logic;
 import chess.pieces.Piece;
 import chess.pieces.Side;
+import chess.pieces.Type;
+import java.awt.Frame;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  * Käsittelee tapahtumankuuntelijoilta saadun infon
@@ -21,8 +24,6 @@ public class Selections {
     private Controls controls;
     private Board board;
     private Drawer drawer;
-    private boolean promotion;
-    private Piece willBePromoted;
     
     public Selections(Logic logic , Controls controls , Board board , Drawer drawer){
         this.logic = logic;
@@ -31,14 +32,9 @@ public class Selections {
         this.squareSelected = false;
         this.drawer = drawer;
         this.square = new Square(-1, -1, Side.NEUTRAL);
-        this.promotion = false;
-        this.willBePromoted = null;
     }
     
     public void squareClicked(Square sq){
-        if (promotion){
-            return;
-        }
         if (squareSelected){
             if (sq.equals(square)){
                 squareSelected = false;
@@ -55,19 +51,17 @@ public class Selections {
     private void tryMoving(Square sq) {
         Piece piece = board.getPiece(square);
         if (logic.pieceCanMoveTo(piece).contains(sq)){
-            promotion = controls.makeAMove(piece, sq, false);
+            boolean promotion = controls.makeAMove(piece, sq, false);
             squareSelected = false;
             if (promotion){
-                willBePromoted = piece;
+                drawer.repaint();
+                promotePawn(piece);
             }
             drawer.setSquares(new ArrayList<Square>());
             drawer.repaint();
         }
     }
 
-    private void promotePawn(Piece piece) {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
 
     private void trySelecting(Square sq) {
         if (sq.getSide() == logic.getTurn().getSide() && logic.pieceCanMoveTo(board.getPiece(sq)).size() > 0){
@@ -83,6 +77,25 @@ public class Selections {
     public void unSelect(){
         squareSelected = false;
     }
-    
-    
+
+    private void promotePawn(Piece piece) {
+        int n = -1;
+        Object[] options = {"Queen" , "Rook" , "Knight" , "Bishop"};
+        while (n == -1){
+            n = JOptionPane.showOptionDialog(new Frame(), "Promote pawn to", "Promotion", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options);
+        }
+        if (n == 0){
+            controls.promote(piece , Type.QUEEN);
+        }
+        if (n == 1){
+            controls.promote(piece , Type.ROOK);
+        }
+        if (n == 2){
+            controls.promote(piece , Type.KNIGHT);
+        }
+        if (n == 3){
+            controls.promote(piece , Type.BISHOP);
+        }
+        drawer.repaint();
+    }
 }
