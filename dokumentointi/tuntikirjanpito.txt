@@ -41,3 +41,6 @@
 
 8.1.2013
 4h bugikorjailua dokumentointia ja viimeistelyä. 
+
+9.1.2013
+2h metodien kommentointi ja hienosäätöä. 
