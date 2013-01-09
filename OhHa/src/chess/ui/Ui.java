@@ -4,14 +4,19 @@ package chess.ui;
 import chess.board.Board;
 import chess.logic.Controls;
 import chess.logic.Logic;
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.io.IOException;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import javax.swing.plaf.basic.BasicSplitPaneUI.BasicHorizontalLayoutManager;
+import sun.awt.HorizBagLayout;
 
 /**
  * Pelin käyttöliittymä
@@ -38,8 +43,8 @@ public class Ui implements Runnable{
     @Override
     public void run() {
         frame = new JFrame("Joel's Chess");
-        frame.setPreferredSize(new Dimension(800 , 625));
-        frame.setMinimumSize(new Dimension(800, 625));
+        frame.setPreferredSize(new Dimension(800 , 600));
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         try {
                 createComponents(frame.getContentPane());
@@ -48,7 +53,6 @@ public class Ui implements Runnable{
         
         frame.pack();
         frame.setVisible(true);
-        
     }
 
     /**
