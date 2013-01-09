@@ -17,11 +17,27 @@ import java.util.Scanner;
  */
 
 public class TextUi {
+    /**
+     * Lukija, joka lukee käyttäjän syötteet. 
+     */
     private Scanner scanner;
+    /**
+     * Shakkilauta. 
+     */
     private Board board;
+    /**
+     * Sovelluslogiikka. 
+     */
     private Logic logic;
+    /**
+     * Siirtotoiminnallisuus. 
+     */
     private Controls controls;
     
+    /**
+     * Alustaa attribuutit. 
+     * @throws IOException 
+     */
     public TextUi() throws IOException{
         this.scanner = new Scanner(System.in);
         this.board = new Board();
@@ -31,7 +47,10 @@ public class TextUi {
     }
     
     
-    
+    /**
+     * Suorittaa tekstikäyttöliittymän. 
+     * @throws IOException 
+     */
     public void run() throws IOException{
         
         
@@ -70,7 +89,10 @@ public class TextUi {
             }
     }
 }
-
+    /**
+     * Siirrettävän nappulan valinta. 
+     * @param command 
+     */
     private void startMoving(String command) {
         Locator locator = new Locator(board);
         Square square = locator.getSquare(command);
@@ -83,7 +105,11 @@ public class TextUi {
         }
         moveTo(square);
     }
-
+    /**
+     * Tarkastaa, voiko valintaa suorittaa. 
+     * @param square
+     * @return cantMove
+     */
     private boolean cantMove(Square square) {
         if (square.getSide() != logic.getTurn().getSide()){
             System.out.println("you have no piece in that square");
@@ -95,7 +121,10 @@ public class TextUi {
         }
         return false;
     }
-
+    
+    /**
+     * Tarkastaa, onko peli päättynyt. 
+     */
     private void isItOver() {
         if (logic.checkmate()){
             logic.nextTurn();
@@ -107,6 +136,10 @@ public class TextUi {
         }
     }
 
+    /**
+     * Siirron varsinainen suorittaminen. 
+     * @param square
+     */
     private void moveTo(Square square) {
         System.out.println("square selected");
         while (true){
@@ -131,7 +164,10 @@ public class TextUi {
             break;
         }
     }
-
+    /**
+     * Sotilaan korottaminen. 
+     * @param piece 
+     */
     private void promote(Piece piece) {
         while (true){
             System.out.println("promotion: queen , rook , knight or bishop");

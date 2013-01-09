@@ -12,10 +12,19 @@ import javax.swing.SwingUtilities;
  */
 
 public class Chess {
+    /**
+     * Graafinen käyttöliittymä. 
+     */
     private Ui ui;
+    /**
+     * Tekstikäyttöliittymä. 
+     */
     private TextUi textUi;
     
-
+    /**
+     * Luo uuden graafisen ja tekstikäyttöliittymän. 
+     * @throws IOException 
+     */
     public Chess() throws IOException{
         this.ui = new Ui();
         this.textUi = new TextUi();

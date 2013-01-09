@@ -15,14 +15,39 @@ import java.util.List;
  */
 
 public class Logic {
+    /**
+     * Shakkilauta. 
+     */
     private Board board;
+    /**
+     * Vuoro-olio, jonka ainut tehtävä on muistaa kumman vuoro on. 
+     */
     private Turn turn;
+    /**
+     * Kertoo, voiko valkoinen mennä lyhyeeseen linnaan pelin aikana. 
+     */
     private boolean shortCastleWhite;
+    /**
+     * Kertoo, voiko valkoinen mennä pitkään linnaan pelin aikana. 
+     */
     private boolean longCastleWhite;
+    /**
+     * Kertoo, voiko musta mennä lyhyeeseen linnaan pelin aikana. 
+     */
     private boolean shortCastleBlack;
+    /**
+     * Kertoo, voiko musta mennä pitkään linnaan pelin aikana. 
+     */
     private boolean longCastleBlack;
+    /**
+     * Ruutu johon siirtymällä sotilas lyö ohesta. Null, jos ruutua ei ole. 
+     */
     private Square enPassant;
     
+    /**
+     * Asettaa logiikan laudaksi parametrina annetun laudan sekä luo muut logiikan tarvitsemat muuttujat. 
+     * @param board 
+     */
     public Logic(Board board){
         this.board = board;
         this.turn = new Turn();
@@ -55,7 +80,7 @@ public class Logic {
     
     /**
      * Asettaa ruudun, josta voidaan lyödä ohesta. 
-     * @param Square square 
+     * @param square 
      */
     public void setEnPassant(Square square){
         enPassant = square;
@@ -63,7 +88,7 @@ public class Logic {
     
     /**
      * Palauttaa Vuoro-olion. 
-     * @return 
+     * @return turn
      */
     public Turn getTurn(){
         return turn;
@@ -115,7 +140,7 @@ public class Logic {
     /**
      * Palauttaa true, jos vuorossa oleva pelaaja on patissa 
      * tai jos nappuloita on liian vähän matin tekemiseen.
-     * @return 
+     * @return stalemate
      */
     public boolean stalemate(){
         if (tooFewPieces()){
@@ -133,8 +158,8 @@ public class Logic {
     } 
 /**
      * Palauttaa lista ruuduista, mihin parametrina annettu nappula saa siirtyä. 
-     * @param Piece piece
-     * @return ArrayList<Square> squares
+     * @param piece
+     * @return squares
      */
     public ArrayList<Square> pieceCanMoveTo(Piece piece){
         ArrayList<Square> canMoveTo = new ArrayList<Square>();

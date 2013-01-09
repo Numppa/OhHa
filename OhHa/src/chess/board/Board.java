@@ -15,9 +15,19 @@ import java.util.List;
  */
 
 public class Board {
+    /**
+     * Laudan ruudut taulukossa. 
+     */
     private Square[][] squares;
+    /**
+     * Nappulat listassa. 
+     */
     private List<Piece> pieces;
     
+    /**
+     * Luo ruudut ja nappulat laudalle. 
+     * @throws IOException 
+     */
     public Board() throws IOException{
         this.squares = new Square[8][8];
         this.pieces = new ArrayList<Piece>();
@@ -49,8 +59,8 @@ public class Board {
     
     /**
      * Hakee parametrina annetussa ruudussa olevan nappulan.
-     * @param Square
-     * @return Piece
+     * @param square
+     * @return piece
      */
     public Piece getPiece(Square s){
         Piece p = null;

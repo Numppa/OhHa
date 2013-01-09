@@ -16,11 +16,24 @@ import java.io.IOException;
  */
 
 public class Controls {
+    /**
+     * Shakkilauta. 
+     */
     private Board board;
+    /**
+     * Sovelluslogiikka. 
+     */
     private Logic logic;
+    /**
+     * Siirtoloki ja tallennustiominnallisuus. 
+     */
     private Moves moves;
     
-    
+    /**
+     * Asettaa kontrolliluokalle laudan ja sovelluslogiikan sekä luo siirtokirjanpidon. 
+     * @param board
+     * @param logic 
+     */
     public Controls(Board board , Logic logic){
         this.board = board;
         this.logic = logic;
@@ -47,10 +60,10 @@ public class Controls {
     
     /**
      * Suorittaa nappulan siirtämisen. Palauttaa true, jos siirretty nappula on korottuva sotilas. Muuten palauttaa false. Loading-parametri on true, kun tallennettua peliä ladataan. Muulloin se on false. 
-     * @param Piece piece
-     * @param Square square
-     * @param Boolean loading
-     * @return boolean willPromote
+     * @param piece
+     * @param square
+     * @param loading
+     * @return willPromote
      */
     public boolean makeAMove(Piece piece , Square square , boolean loading){
         boolean willPromote = false;
@@ -198,8 +211,8 @@ public class Controls {
     
     /**
      * Korottaa sotilaan. 
-     * @param Piece piece
-     * @param Type type 
+     * @param piece
+     * @param type 
      */
     public void promote(Piece piece , Type type){
         piece.setType(type);
@@ -218,8 +231,5 @@ public class Controls {
             lastMove += "b";
         }
         moves.addString(lastMove);
-    }
-    
-    
-    
+    }    
 }

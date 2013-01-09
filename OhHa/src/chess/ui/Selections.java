@@ -18,14 +18,38 @@ import javax.swing.JOptionPane;
  */
 
 public class Selections {
+    /**
+     * Kertoo onko ruutu valittu. 
+     */
     private boolean squareSelected;
+    /**
+     * Ruutu-olio, joka on viimeisin valittu ruutu. 
+     */
     private Square square;
+    /**
+     * Sovelluslogiikka. 
+     */
     private Logic logic;
+    /**
+     * Siirtotoiminnallisuus.
+     */
     private Controls controls;
+    /**
+     * Shakkilauta
+     */
     private Board board;
+    /**
+     * Laudan ja nappuloiden piirtäjä. 
+     */
     private Drawer drawer;
     
-    
+    /**
+     * Asettaa sovelluslogiikaksi, siirtotoiminnallisuudeksi , laudaksi ja piirtäjäksi parametrina annetut oliot. 
+     * @param logic
+     * @param controls
+     * @param board
+     * @param drawer 
+     */
     public Selections(Logic logic , Controls controls , Board board , Drawer drawer){
         this.logic = logic;
         this.controls = controls;
@@ -37,7 +61,7 @@ public class Selections {
     
     /**
      * Toteuttaa mahdolliset tapahtumat, mitä seuraa ruudun klikkaamisesta. 
-     * @param Square sq 
+     * @param square 
      */
     public void squareClicked(Square sq){
         if (squareSelected){

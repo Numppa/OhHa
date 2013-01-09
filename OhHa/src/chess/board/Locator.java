@@ -7,8 +7,15 @@ package chess.board;
  */
 
 public class Locator {
+    /**
+     * Shakkilauta.
+     */
     private Board board;
     
+    /**
+     * Asettaa laudaksi parametrina annetun laudan. 
+     * @param board 
+     */
     public Locator(Board board){
         this.board = board;
     }
@@ -16,8 +23,8 @@ public class Locator {
     /**
      * Palauttaa merkkijonoesitystä vastaavan ruudun. Palauttaa null jos merkkijono virheelinen. 
      * Esim. "a1" tai "e4"
-     * @param String location
-     * @return Square
+     * @param location
+     * @return square
      */
     public Square getSquare(String location){
         int y = -1;

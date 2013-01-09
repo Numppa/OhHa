@@ -11,15 +11,24 @@ import chess.pieces.Side;
 public class Turn {
     private Side side;
     
-    
+    /**
+     * Asettaa side-muuuttujan arvoksi WHITE. 
+     */
     public Turn(){
         this.side = Side.WHITE;
     }
     
+    /**
+     * Palauttaa tiedon vuorossa olevasta pelaajsta. 
+     * @return 
+     */
     public Side getSide(){
         return side;
     }
     
+    /**
+     * Asettaa vuoron toiselle pelaajalle. 
+     */
     public void next(){
         if (side == Side.WHITE){
             side = Side.BLACK;

@@ -16,9 +16,19 @@ import javax.swing.JPanel;
  */
 
 public class Drawer extends JPanel{
+    /**
+     * Shakkilauta. 
+     */
     Board board;
+    /**
+     * Lista korostettavista ruuduista. 
+     */
     ArrayList<Square> squares;
     
+    /**
+     * Asettaa laudaksi parametrina annetun laudan sekä Tyhjän listan. 
+     * @param board 
+     */
     public Drawer(Board board){
         this.board = board;
         this.squares = new ArrayList<Square>();
@@ -26,7 +36,10 @@ public class Drawer extends JPanel{
         this.setMaximumSize(new Dimension(600, 600));
     }
     
-    
+    /**
+     * Piirtää laudan ja nappulat. 
+     * @param graphics 
+     */
     @Override
     protected void paintComponent(Graphics graphics){
         
@@ -37,7 +50,10 @@ public class Drawer extends JPanel{
         }
 
     }
-    
+    /**
+     * Asettaa korostettavat ruudut. 
+     * @param list 
+     */
     public void setSquares(ArrayList<Square> list){
         squares = list;
     }

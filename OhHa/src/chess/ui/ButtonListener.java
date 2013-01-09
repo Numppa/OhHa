@@ -13,14 +13,46 @@ import javax.swing.JButton;
  */
 
 public class ButtonListener implements ActionListener{
+    /**
+     * selections-oliota kutsutaan silloin, kun hiirtä klikataan laudan alueella
+     * tai sivupaneelin painikkeita painetaan. 
+     */
     private Selections selections;
+    /**
+     * Suorittaa painikkeista seuraavat tapahtumat.
+     */
     private Controls controls;
+    /**
+     * Piirtää koko laudan. 
+     */
     private Drawer drawer;
+    /**
+     * Uusi peli -nappi
+     */
     private JButton newButton;
+    /**
+     * Tallenna -nappi
+     */
     private JButton saveButton;
+    /**
+     * Lataa tallennettu peli -nappi
+     */
     private JButton loadButton;
+    /**
+     * peru siirto -nappi
+     */
     private JButton undoButton;
-
+    
+    /**
+     * Asettaa atribuuteiksi parametreina annetut oliot. 
+     * @param selections
+     * @param controls
+     * @param drawer
+     * @param newButton
+     * @param saveButton
+     * @param loadButton
+     * @param undoButton 
+     */
     public ButtonListener(Selections selections , Controls controls, Drawer drawer , JButton newButton , JButton saveButton , JButton loadButton , JButton undoButton) {
         this.selections = selections;
         this.controls = controls;
@@ -32,7 +64,10 @@ public class ButtonListener implements ActionListener{
     }
     
     
-
+    /**
+     * Käsittelee oikean paneelin nappien painamiset. 
+     * @param arg0 
+     */
     @Override
     public void actionPerformed(ActionEvent arg0) {
         selections.unSelect();
@@ -55,5 +90,4 @@ public class ButtonListener implements ActionListener{
         } catch (IOException ex) {
         }
     }
-    
 }

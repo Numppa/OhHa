@@ -9,10 +9,25 @@ import chess.pieces.Side;
  */
 
 public class Square {
+    /**
+     * Ruudun miehitys (musta , valkoinen tai neutraali). 
+     */
     private Side side;
+    /**
+     * Ruudun x-koordinaatti (välillä 0-7).
+     */
     private int x;
+    /**
+     * Ruudun y-koordinaatti (välillä 0-7). 
+     */
     private int y;
     
+    /**
+     * Asettaa ruudulle koordinaatit sekä tiedon mahdollisesta miehityksestä. 
+     * @param x
+     * @param y
+     * @param side 
+     */
     public Square(int x , int y , Side side){
         this.x = x;
         this.y = y;
@@ -29,7 +44,7 @@ public class Square {
     
     /**
      * Asettaa ruudulle tiedon mahdollisesta nappulasta sen päällä. 
-     * @param Side 
+     * @param side 
      */
     public void setSide(Side s){
         side = s;
@@ -54,7 +69,7 @@ public class Square {
    
     /**
      * Palauttaa koordinaatit merkkijonona. Tätä hyödynnetään tallentamisessa. 
-     * @return 
+     * @return xy
      */
     @Override
     public String toString(){

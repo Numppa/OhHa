@@ -20,8 +20,14 @@ import javax.swing.WindowConstants;
  */
 
 public class Ui implements Runnable{
+    /**
+     * Ikkuna-olio. 
+     */
     private JFrame frame;
     
+    /**
+     * Tyhjä kostruktori. 
+     */
     public Ui() {
     }
     
@@ -57,7 +63,7 @@ public class Ui implements Runnable{
         JPanel panel = new JPanel();
         
         BoxLayout box = new BoxLayout(panel, BoxLayout.Y_AXIS);
-        panel.setMaximumSize(new Dimension(200, 250));
+        panel.setMaximumSize(new Dimension(200, 200));
         
         JButton newButton = new JButton("New game");
         JButton saveButton = new JButton("Save game");
@@ -93,6 +99,10 @@ public class Ui implements Runnable{
         container.addMouseListener(mouseListener);
     }
     
+    /**
+     * Palauttaa ikkunan. 
+     * @return frame
+     */
     public JFrame getFrame(){
         return frame;
     }
