@@ -30,18 +30,18 @@ public class PieceGraphics {
     private BufferedImage whiteQueen;
     
     public PieceGraphics() throws IOException{
-        this.blackPawn = ImageIO.read(new File("src/chess/ui/graphics/blackpawn.png")); 
-        this.whitePawn = ImageIO.read(new File("src/chess/ui/graphics/whitepawn.png"));
-        this.blackRook = ImageIO.read(new File("src/chess/ui/graphics/blackrook.png")); 
-        this.whiteRook = ImageIO.read(new File("src/chess/ui/graphics/whiterook.png"));
-        this.blackKnight = ImageIO.read(new File("src/chess/ui/graphics/blackknight.png")); 
-        this.whiteKnight = ImageIO.read(new File("src/chess/ui/graphics/whiteknight.png"));
-        this.blackBishop = ImageIO.read(new File("src/chess/ui/graphics/blackbishop.png")); 
-        this.whiteBishop = ImageIO.read(new File("src/chess/ui/graphics/whitebishop.png"));
-        this.blackKing = ImageIO.read(new File("src/chess/ui/graphics/blackking.png")); 
-        this.whiteKing = ImageIO.read(new File("src/chess/ui/graphics/whiteking.png"));
-        this.blackQueen = ImageIO.read(new File("src/chess/ui/graphics/blackqueen.png")); 
-        this.whiteQueen = ImageIO.read(new File("src/chess/ui/graphics/whitequeen.png"));
+        this.blackPawn = ImageIO.read(new File("images/blackpawn.png")); 
+        this.whitePawn = ImageIO.read(new File("images/whitepawn.png"));
+        this.blackRook = ImageIO.read(new File("images/blackrook.png")); 
+        this.whiteRook = ImageIO.read(new File("images/whiterook.png"));
+        this.blackKnight = ImageIO.read(new File("images/blackknight.png")); 
+        this.whiteKnight = ImageIO.read(new File("images/whiteknight.png"));
+        this.blackBishop = ImageIO.read(new File("images/blackbishop.png")); 
+        this.whiteBishop = ImageIO.read(new File("images/whitebishop.png"));
+        this.blackKing = ImageIO.read(new File("images/blackking.png")); 
+        this.whiteKing = ImageIO.read(new File("images/whiteking.png"));
+        this.blackQueen = ImageIO.read(new File("images/blackqueen.png")); 
+        this.whiteQueen = ImageIO.read(new File("images/whitequeen.png"));
     }
     
     

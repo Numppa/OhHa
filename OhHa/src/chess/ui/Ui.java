@@ -51,7 +51,7 @@ public class Ui implements Runnable{
     }
 
     /**
-     * Luo käyttöliittymäcomponentit. 
+     * Luo käyttöliittymäkomponentit. 
      * @param container
      * @throws IOException 
      */

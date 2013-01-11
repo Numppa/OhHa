@@ -44,3 +44,6 @@
 
 9.1.2013
 2h metodien kommentointi ja hienosäätöä. 
+
+11.1.2013
+2h viimeistely

@@ -20,7 +20,7 @@ public class Turn {
     
     /**
      * Palauttaa tiedon vuorossa olevasta pelaajsta. 
-     * @return 
+     * @return side
      */
     public Side getSide(){
         return side;
