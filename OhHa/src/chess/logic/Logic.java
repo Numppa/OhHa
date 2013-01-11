@@ -216,38 +216,14 @@ public class Logic {
      */
     private ArrayList<Square> knightsInfluence(Piece piece){
         ArrayList<Square> squares = new ArrayList<Square>();
-        try {
-            squares.add(board.getSquares()[piece.getSquare().getX() + 1][piece.getSquare().getY() + 2]);
-        } catch (Exception e){
-        }
-        try {
-            squares.add(board.getSquares()[piece.getSquare().getX() + 2][piece.getSquare().getY() + 1]);
-        } catch (Exception e){
-        }
-        try {
-            squares.add(board.getSquares()[piece.getSquare().getX() - 1][piece.getSquare().getY() - 2]);
-        } catch (Exception e){
-        }
-        try {
-            squares.add(board.getSquares()[piece.getSquare().getX() - 2][piece.getSquare().getY() - 1]);
-        } catch (Exception e){
-        }
-        try {
-            squares.add(board.getSquares()[piece.getSquare().getX() + 1][piece.getSquare().getY() - 2]);
-        } catch (Exception e){
-        }
-        try {
-            squares.add(board.getSquares()[piece.getSquare().getX() - 1][piece.getSquare().getY() + 2]);
-        } catch (Exception e){
-        }
-        try {
-            squares.add(board.getSquares()[piece.getSquare().getX() + 2][piece.getSquare().getY() - 1]);
-        } catch (Exception e){
-        }
-        try {
-            squares.add(board.getSquares()[piece.getSquare().getX() - 2][piece.getSquare().getY() + 1]);
-        } catch (Exception e){
-        }
+        squares = knightJump(1 , 2 , squares, piece);
+        squares = knightJump(2 , 1 , squares, piece);
+        squares = knightJump(-1 , 2 , squares, piece);
+        squares = knightJump(1 , -2 , squares, piece);
+        squares = knightJump(-2 , 1 , squares, piece);
+        squares = knightJump(2 , -1 , squares, piece);
+        squares = knightJump(-1 , -2 , squares, piece);
+        squares = knightJump(-2 , -1 , squares, piece);
         
         return squares;
     }
@@ -260,65 +236,10 @@ public class Logic {
     private ArrayList<Square> bishopsInfluence(Piece piece){
         ArrayList<Square> squares = new ArrayList<Square>();
         
-        int x = piece.getSquare().getX();
-        int y = piece.getSquare().getY();
-        while (true){
-            x++;
-            y++;
-            try {
-                squares.add(board.getSquares()[x][y]);
-                if (board.getSquares()[x][y].getSide() != Side.NEUTRAL){
-                    break;
-                }
-            } catch (Exception e){
-                break;
-            }
-        }
-        
-        x = piece.getSquare().getX();
-        y = piece.getSquare().getY();
-        while (true){
-            x++;
-            y--;
-            try {
-                squares.add(board.getSquares()[x][y]);
-                if (board.getSquares()[x][y].getSide() != Side.NEUTRAL){
-                    break;
-                }
-            } catch (Exception e){
-                break;
-            }
-        }
-        
-        x = piece.getSquare().getX();
-        y = piece.getSquare().getY();
-        while (true){
-            x--;
-            y++;
-            try {
-                squares.add(board.getSquares()[x][y]);
-                if (board.getSquares()[x][y].getSide() != Side.NEUTRAL){
-                    break;
-                }
-            } catch (Exception e){
-                break;
-            }
-        }
-        
-        x = piece.getSquare().getX();
-        y = piece.getSquare().getY();
-        while (true){
-            x--;
-            y--;
-            try {
-                squares.add(board.getSquares()[x][y]);
-                if (board.getSquares()[x][y].getSide() != Side.NEUTRAL){
-                    break;
-                }
-            } catch (Exception e){
-                break;
-            }
-        }
+        squares = bishopLine(1 , 1 , squares , piece);
+        squares = bishopLine(1 , -1 , squares , piece);
+        squares = bishopLine(-1 , 1 , squares , piece);
+        squares = bishopLine(-1 , -1 , squares , piece);
         
         return squares;
     }
@@ -726,5 +647,48 @@ public class Logic {
             }
         }
         return false;
+    }
+
+    /**
+     * Apumetodi joka lisää ratsun uhkaamiin ruutuihin yhden ruudun. 
+     * @param x
+     * @param y
+     * @param squares
+     * @param piece
+     * @return squares
+     */
+    private ArrayList<Square> knightJump(int x, int y, ArrayList<Square> squares, Piece piece) {
+        try {
+            squares.add(board.getSquares()[piece.getSquare().getX() + x][piece.getSquare().getY() + y]);
+        } catch (Exception e){
+        }
+        return squares;
+    }
+
+    /**
+     * Apumetodi joka lisää lähetin uhkaamiin ruutihin yhden neljästä suunnasta. 
+     * @param dx
+     * @param dy
+     * @param squares
+     * @param piece
+     * @return 
+     */
+    private ArrayList<Square> bishopLine(int dx, int dy, ArrayList<Square> squares, Piece piece) {
+        int x = piece.getSquare().getX();
+        int y = piece.getSquare().getY();
+        while (true){
+            x += dx;
+            y += dy;
+            
+            try {
+                squares.add(board.getSquares()[x][y]);
+                if (board.getSquares()[x][y].getSide() != Side.NEUTRAL){
+                    break;
+                }
+            } catch (Exception e){
+                break;
+            }
+        }
+        return squares;
     }
 }

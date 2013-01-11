@@ -4,19 +4,14 @@ package chess.ui;
 import chess.board.Board;
 import chess.logic.Controls;
 import chess.logic.Logic;
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.io.IOException;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
-import javax.swing.plaf.basic.BasicSplitPaneUI.BasicHorizontalLayoutManager;
-import sun.awt.HorizBagLayout;
 
 /**
  * Pelin käyttöliittymä
