@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="joel-305U1A" name="chess.LogicTest" tests="14" time="7.696" timestamp="2013-01-11T17:04:43">
+<testsuite errors="0" failures="0" hostname="joel-305U1A" name="chess.LogicTest" tests="14" time="7.568" timestamp="2013-01-11T17:17:12">
   <properties>
     <property name="default.javac.source" value="1.7" />
     <property name="file.encoding.pkg" value="sun.io" />
@@ -79,7 +79,7 @@
     <property name="file.encoding" value="UTF-8" />
     <property name="dist.javadoc.dir" value="dist/javadoc" />
     <property name="ant.project.default-target" value="default" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner chess.LogicTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/joel/OhHa/OhHa/build/test/results/TEST-chess.LogicTest.xml crashfile=/home/joel/OhHa/OhHa/build/junitvmwatcher7335049223196553685.properties propsfile=/home/joel/OhHa/OhHa/build/junit7279517150324333050.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner chess.LogicTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/joel/OhHa/OhHa/build/test/results/TEST-chess.LogicTest.xml crashfile=/home/joel/OhHa/OhHa/build/junitvmwatcher1458143015223566958.properties propsfile=/home/joel/OhHa/OhHa/build/junit7225842646737116911.properties" />
     <property name="built-jar.properties" value="/home/joel/OhHa/OhHa/build/built-jar.properties" />
     <property name="libs.junit.src" value="" />
     <property name="ant.file.OhHa-impl" value="/home/joel/OhHa/OhHa/nbproject/build-impl.xml" />
@@ -152,9 +152,9 @@
     <property name="ap.supported.internal" value="true" />
     <property name="libs.PostgreSQLDriver.javadoc" value="" />
     <property name="ant.java.version" value="1.7" />
-    <property name="java.class.version" value="51.0" />
     <property name="javadoc.noindex" value="false" />
     <property name="basedir" value="/home/joel/OhHa/OhHa" />
+    <property name="java.class.version" value="51.0" />
     <property name="sun.awt.exception.handler" value="org.netbeans.core.startup.TopLogging$AWTHandler" />
     <property name="javac.test.classpath" value=":build/classes:/usr/share/netbeans/7.0.1/platform/modules/ext/junit-4.8.2.jar:/cs/fs/home/jonu/.netbeans/7.2/modules/ext/junit-4.10.jar" />
     <property name="javac.processorpath" value="" />
@@ -170,16 +170,16 @@
     <property name="jnlp.signing.keystore" value="" />
     <property name="junit.forkmode" value="perTest" />
     <property name="libs.junit_4.classpath" value="/usr/share/netbeans/7.0.1/platform/modules/ext/junit-4.8.2.jar" />
-    <property name="build.dir" value="build" />
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64" />
+    <property name="build.dir" value="build" />
     <property name="application.title" value="OhHa" />
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
     <property name="libs.swing-app-framework.classpath" value="/usr/share/netbeans/7.0.1/java/modules/ext/appframework-1.0.3.jar" />
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
     <property name="javadoc.encoding.used" value="UTF-8" />
     <property name="javadoc.windowtitle" value="" />
-    <property name="run.jvmargs.ide" value="" />
     <property name="annotation.processing.enabled" value="true" />
+    <property name="run.jvmargs.ide" value="" />
     <property name="nb.junit.single" value="false" />
     <property name="build.generated.sources.dir" value="build/generated-sources" />
     <property name="run.jvmargs" value="" />
@@ -208,17 +208,18 @@
     <property name="ignore.failing.tests" value="true" />
     <property name="endorsed.classpath.cmd.line.arg" value="" />
     <property name="jar.index" value="false" />
+    <property name="netbeans.automatic.build" value="true" />
+    <property name="java.vm.version" value="23.2-b09" />
     <property name="jnlp.offline-allowed" value="false" />
     <property name="libs.MySQLDriver.src" value="" />
-    <property name="java.vm.version" value="23.2-b09" />
-    <property name="annotation.processing.processor.options" value="" />
     <property name="java.class.path" value="/home/joel/OhHa/OhHa/build/classes:/usr/share/netbeans/7.0.1/platform/modules/ext/junit-4.8.2.jar:/home/joel/OhHa/OhHa/build/test/classes:/usr/share/netbeans/7.0.1/java/ant/lib/junit.jar:/usr/share/netbeans/7.0.1/java/ant/lib/ant-launcher.jar:/usr/share/netbeans/7.0.1/java/ant/lib/ant.jar:/usr/share/netbeans/7.0.1/java/ant/lib/ant-junit.jar:/usr/share/netbeans/7.0.1/java/ant/lib/ant-junit4.jar" />
+    <property name="annotation.processing.processor.options" value="" />
     <property name="os.arch" value="amd64" />
     <property name="javac.deprecation" value="false" />
     <property name="build.classes.excludes" value="**/*.java,**/*.form" />
     <property name="dist.dir" value="dist" />
-    <property name="netbeans.user" value="/home/joel/.netbeans/7.0" />
     <property name="debug.classpath" value=":build/classes" />
+    <property name="netbeans.user" value="/home/joel/.netbeans/7.0" />
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="jar.index.metainf" value="false" />
     <property name="jnlp.codebase.type" value="no.codebase" />
@@ -242,15 +243,15 @@
     <property name="libs.javac-api.classpath" value="/usr/share/netbeans/7.0.1/java/modules/ext/javac-api-nb-7.0-b07.jar" />
     <property name="user.country" value="FI" />
     <property name="javadoc.notree" value="false" />
-    <property name="javadoc.additionalparam" value="" />
     <property name="javac.classpath" value="" />
+    <property name="javadoc.additionalparam" value="" />
     <property name="default.javac.target" value="1.7" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="do.archive+manifest.available" value="true" />
     <property name="libs.swing-layout.javadoc" value="" />
     <property name="libs.swing-layout.src" value="" />
-    <property name="javac.target" value="1.7" />
     <property name="java.vendor" value="Oracle Corporation" />
+    <property name="javac.target" value="1.7" />
     <property name="runtime.encoding" value="UTF-8" />
     <property name="libs.swing-app-framework.src" value="" />
     <property name="java.specification.version" value="1.7" />
@@ -258,20 +259,20 @@
     <property name="mkdist.disabled" value="false" />
     <property name="sun.arch.data.model" value="64" />
   </properties>
-  <testcase classname="chess.LogicTest" name="knightCanMake2DifferentOpeningMoves" time="1.466" />
-  <testcase classname="chess.LogicTest" name="cBishopMovesRightIfDpawnIsAway" time="0.696" />
-  <testcase classname="chess.LogicTest" name="queenCanMoveTo19DifferentSquares" time="0.644" />
-  <testcase classname="chess.LogicTest" name="itIsntCheckmate" time="0.463" />
-  <testcase classname="chess.LogicTest" name="itIsCheckmate" time="0.57" />
-  <testcase classname="chess.LogicTest" name="itIsntStalemate" time="0.526" />
-  <testcase classname="chess.LogicTest" name="itIsStalemate" time="0.409" />
-  <testcase classname="chess.LogicTest" name="enPassantWorks" time="0.415" />
-  <testcase classname="chess.LogicTest" name="canStartWithE2Pawn" time="0.378" />
-  <testcase classname="chess.LogicTest" name="kingCanDoShortCastle" time="0.377" />
-  <testcase classname="chess.LogicTest" name="cantCastleIfChecked" time="0.391" />
+  <testcase classname="chess.LogicTest" name="knightCanMake2DifferentOpeningMoves" time="1.383" />
+  <testcase classname="chess.LogicTest" name="cBishopMovesRightIfDpawnIsAway" time="0.676" />
+  <testcase classname="chess.LogicTest" name="queenCanMoveTo19DifferentSquares" time="0.613" />
+  <testcase classname="chess.LogicTest" name="itIsntCheckmate" time="0.49" />
+  <testcase classname="chess.LogicTest" name="itIsCheckmate" time="0.531" />
+  <testcase classname="chess.LogicTest" name="itIsntStalemate" time="0.552" />
+  <testcase classname="chess.LogicTest" name="itIsStalemate" time="0.405" />
+  <testcase classname="chess.LogicTest" name="enPassantWorks" time="0.403" />
+  <testcase classname="chess.LogicTest" name="canStartWithE2Pawn" time="0.395" />
+  <testcase classname="chess.LogicTest" name="kingCanDoShortCastle" time="0.365" />
+  <testcase classname="chess.LogicTest" name="cantCastleIfChecked" time="0.4" />
   <testcase classname="chess.LogicTest" name="pawnPreventsCheck" time="0.408" />
-  <testcase classname="chess.LogicTest" name="kingCantMoveOnFirstTurn" time="0.359" />
-  <testcase classname="chess.LogicTest" name="kingCanMoveIfF1BishopIsAway" time="0.33" />
+  <testcase classname="chess.LogicTest" name="kingCantMoveOnFirstTurn" time="0.346" />
+  <testcase classname="chess.LogicTest" name="kingCanMoveIfF1BishopIsAway" time="0.339" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
